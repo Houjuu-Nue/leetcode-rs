@@ -5,8 +5,8 @@
 //!
 //! You may assume that each input would have exactly one solution, and you may not use the same element twice.
 //!
-//! Example:
-//! ```
+//! # Example:
+//! ```ignore
 //! Given nums = [2, 7, 11, 15], target = 9,
 //!
 //! Because nums[0] + nums[1] = 2 + 7 = 9,
@@ -14,12 +14,14 @@
 //! ```
 //!
 
-struct Input {
-    nums: Vec<i32>,
-    target: i32,
+pub struct Input {
+    pub nums: Vec<i32>,
+    pub target: i32,
 }
 
-struct Solution;
+pub struct Solution;
+
+pub type Answer = Vec<i32>;
 
 impl Solution {
 
@@ -37,21 +39,5 @@ impl Solution {
         }
         
         Vec::new()
-    }
-}
-
-fn main() {
-
-    let input = Input {
-        nums: vec![0, 4, 3, 0],
-        target: 0,
-    };
-
-    let result = Solution::two_sum(input.nums, input.target);
-
-    if result == vec![0, 1] {
-        println!("Ok");
-    } else {
-        println!("False");
     }
 }
