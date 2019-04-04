@@ -19,13 +19,17 @@ pub struct Input {
     pub target: i32,
 }
 
-pub struct Solution;
-
 pub type Answer = Vec<i32>;
 
-impl Solution {
+pub trait Solution {
+    fn two_sum(&self, nums: Vec<i32>, target: i32) -> Answer;
+}
 
-    pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
+// Approach 1: Brute Force
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
 
         for i in 0..(nums.len() - 1) {
             
