@@ -42,6 +42,31 @@ impl Solution for Solution1 {
             }
         }
         
-        Vec::new()
+        panic!("Solution failed.")
+    }
+}
+
+// Approach 2: Two-pass Hash Table
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
+
+        use std::collections::HashMap;
+
+        let mut map = HashMap::new();
+
+        for (i, num) in nums.into_iter().enumerate() {
+            
+            let complement = target - num;
+
+            if let Some(complement_index) = map.get(&complement).cloned() {
+                return vec![complement_index as i32, i as i32]
+            } else {
+                map.insert(num, i);
+            }
+        }
+
+        panic!("Solution failed.")
     }
 }
