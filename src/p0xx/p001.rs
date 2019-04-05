@@ -1,5 +1,5 @@
 //!
-//! https://leetcode-cn.com/problems/two-sum/
+//! https://leetcode.com/problems/two-sum/
 //!
 //! Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 //!
@@ -47,7 +47,7 @@ impl Solution for Solution1 {
     }
 }
 
-// Approach 2: Two-pass Hash Table
+// Approach 2: One-pass Hash Table
 pub struct Solution2;
 impl Solution for Solution2 {
 
