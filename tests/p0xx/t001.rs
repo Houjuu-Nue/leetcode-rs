@@ -1,68 +1,54 @@
 
 use leetcode_rs::p0xx::p001::*;
 
-#[test]
-fn t001_test1() {
-
-    let solutions = [
-        Box::new(Solution1) as Box<dyn Solution>,
-        Box::new(Solution2) as Box<dyn Solution>,
-    ];
-
-    for solution in solutions.into_iter() {
-
-        let input = Input {
-            nums: vec![2, 7, 11, 15],
-            target: 9,
-        };
-
-        let answer: Answer = vec![0, 1];
-        let test_answer = solution.two_sum(input.nums, input.target);
-
-        assert_eq!(test_answer, answer);
-    }
+#[derive(Debug, Clone)]
+struct TestCase {
+    input: Input,
+    answer: Answer,
 }
 
 #[test]
-fn t001_test2() {
+fn t001() {
 
     let solutions = [
         Box::new(Solution1) as Box<dyn Solution>,
         Box::new(Solution2) as Box<dyn Solution>,
     ];
 
-    for solution in solutions.into_iter() {
-
-        let input = Input {
-            nums: vec![3, 2, 4],
-            target: 6,
-        };
-
-        let answer: Answer = vec![1, 2];
-        let test_answer = solution.two_sum(input.nums, input.target);
-
-        assert_eq!(test_answer, answer);
-    }
-}
-
-#[test]
-fn t001_test3() {
-
-    let solutions = [
-        Box::new(Solution1) as Box<dyn Solution>,
-        Box::new(Solution2) as Box<dyn Solution>,
+    let test_samples = [
+        TestCase {
+            input: Input {
+                nums: vec![2, 7, 11, 15],
+                target: 9,
+            },
+            answer: vec![0, 1],
+        },
+        TestCase {
+            input: Input {
+                nums: vec![3, 3],
+                target: 6,
+            },
+            answer: vec![0, 1]
+        },
+        TestCase {
+            input: Input {
+                nums: vec![3, 2, 4],
+                target: 6,
+            },
+            answer: vec![1, 2],
+        },
     ];
 
-    for solution in solutions.into_iter() {
+    for (i, solution) in solutions.into_iter().enumerate() {
 
-        let input = Input {
-            nums: vec![3, 3],
-            target: 6,
-        };
+        for (j, sample) in test_samples.iter().cloned().enumerate() {
 
-        let answer: Answer = vec![0, 1];
-        let test_answer = solution.two_sum(input.nums, input.target);
+            let input = sample.input;
+            let answer = sample.answer;
 
-        assert_eq!(test_answer, answer);
+            let test_answer = solution.two_sum(input.nums, input.target);
+            assert_eq!(test_answer, answer,
+                "Test failed on Solution {} Sample {}", i, j);
+        }
     }
 }

@@ -14,6 +14,7 @@
 //! ```
 //!
 
+#[derive(Debug, Clone)]
 pub struct Input {
     pub nums: Vec<i32>,
     pub target: i32,
