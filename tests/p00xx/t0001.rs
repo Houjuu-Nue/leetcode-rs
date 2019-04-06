@@ -1,5 +1,5 @@
 
-use leetcode_rs::p0xx::p001::*;
+use leetcode_rs::p00xx::p0001::*;
 
 #[derive(Debug, Clone)]
 struct TestCase {

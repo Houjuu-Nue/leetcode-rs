@@ -4,3 +4,4 @@ name = "leetcode-rs"
 version = "1.0.0"
 authors = ["usami-renko <usami-ssc@protonmail.com>"]
 edition = "2018"
+description = "Solutions to LeetCode problems in Rust."
