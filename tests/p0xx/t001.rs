@@ -15,7 +15,7 @@ fn t001() {
         Box::new(Solution2) as Box<dyn Solution>,
     ];
 
-    let test_samples = [
+    let test_cases = [
         TestCase {
             input: Input {
                 nums: vec![2, 7, 11, 15],
@@ -41,10 +41,10 @@ fn t001() {
 
     for (i, solution) in solutions.into_iter().enumerate() {
 
-        for (j, sample) in test_samples.iter().cloned().enumerate() {
+        for (j, case) in test_cases.iter().cloned().enumerate() {
 
-            let input = sample.input;
-            let answer = sample.answer;
+            let input = case.input;
+            let answer = case.answer;
             let test_answer = solution.two_sum(input.nums, input.target);
             
             assert_eq!(test_answer, answer,
