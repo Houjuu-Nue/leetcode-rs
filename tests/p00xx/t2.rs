@@ -1,5 +1,5 @@
 
-use leetcode_rs::p00xx::p0002::*;
+use leetcode_rs::p00xx::p2::*;
 
 #[derive(Debug, Clone)]
 struct TestCase {
@@ -27,7 +27,7 @@ impl From<CaseNumber> for TestCase {
 }
 
 #[test]
-fn t002() {
+fn t2() {
 
     let solutions = [
         Box::new(Solution1) as Box<dyn Solution>,
