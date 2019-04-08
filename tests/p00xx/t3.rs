@@ -12,9 +12,11 @@ fn t3() {
 
     let solutions = [
         Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution2) as Box<dyn Solution>,
+        Box::new(Solution3) as Box<dyn Solution>,
     ];
 
-    let test_cases: [TestCase; 3] = [
+    let test_cases = [
         TestCase {
             input: String::from("abcabcbb"),
             answer: 3,
@@ -35,7 +37,7 @@ fn t3() {
 
             let test_answer = solution.length_of_longest_substring(test_case.input);
 
-            let hint = format!("Test failed on Solution {} Sample {}.\nCorrect answer is {}\nTestCase answer is {}\n", i, j, &test_answer, &test_case.answer);
+            let hint = format!("Test failed on Solution {} TestCase {}.\nCorrect  answer is {}\nTestCase answer is {}\n", i, j, &test_case.answer, &test_answer);
             assert_eq!(test_answer, test_case.answer, "{}", &hint);
         }
     }

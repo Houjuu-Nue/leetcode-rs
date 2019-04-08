@@ -73,7 +73,7 @@ fn test_number_equal(t1: &Option<Box<ListNode>>, t2: &Option<Box<ListNode>>, i: 
                     n1 = &node1.next;
                     n2 = &node2.next;
                 } else {
-                    let help_hint = format!("Test failed on Solution {} Sample {}\n.Value on nodes are different.\nCorrect answer is {:?}\nTestCase answer is {:?}\n", i, j, list_node_to_vec(t2), list_node_to_vec(t1));
+                    let help_hint = format!("Test failed on Solution {} TestCase {}\n.Value on nodes are different.\nCorrect answer is {:?}\nTestCase answer is {:?}\n", i, j, list_node_to_vec(t2), list_node_to_vec(t1));
                     assert!(false, help_hint);
                 }
             },
@@ -82,7 +82,7 @@ fn test_number_equal(t1: &Option<Box<ListNode>>, t2: &Option<Box<ListNode>>, i: 
             },
             | (Some(_), None)
             | (None, Some(_)) => {
-                assert!(false, "Test failed on Solution {} Sample {}.\nCorrect answer is {:?}\nTestCase answer is {:?}\n", i, j, list_node_to_vec(t2), list_node_to_vec(t1));
+                assert!(false, "Test failed on Solution {} TestCase {}.\nCorrect answer is {:?}\nTestCase answer is {:?}\n", i, j, list_node_to_vec(t2), list_node_to_vec(t1));
             },
         }
     }

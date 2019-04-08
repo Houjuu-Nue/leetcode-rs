@@ -48,7 +48,7 @@ fn t1() {
             let test_answer = solution.two_sum(input.nums, input.target);
             
             assert_eq!(test_answer, answer,
-                "Test failed on Solution {} Sample {}", i, j);
+                "Test failed on Solution {} TestCase {}", i, j);
         }
     }
 }
