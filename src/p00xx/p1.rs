@@ -1,11 +1,13 @@
 //!
+//! Two Sum
+//!
 //! https://leetcode.com/problems/two-sum/
 //!
 //! Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 //!
 //! You may assume that each input would have exactly one solution, and you may not use the same element twice.
 //!
-//! # Example:
+//! ## Example:
 //! ```ignore
 //! Given nums = [2, 7, 11, 15], target = 9,
 //!
@@ -23,7 +25,7 @@ pub struct Input {
 pub type Answer = Vec<i32>;
 
 pub trait Solution {
-    fn two_sum(&self, nums: Vec<i32>, target: i32) -> Answer;
+    fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32>;
 }
 
 // Approach 1: Brute Force

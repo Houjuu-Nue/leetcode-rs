@@ -5,7 +5,7 @@ Solutions to LeetCode problems in Rust.
 ## Run Test case
 
 ```shell
-cargo test -- t1 # run test case for problem #1
+$ cargo test -- t1 # run test case for problem #1
 ```
 
 ## Solutions
@@ -13,6 +13,6 @@ cargo test -- t1 # run test case for problem #1
 | #                     | Title                                                        | Difficulty | Best Submit |
 | --------------------- | ------------------------------------------------------------ | ---------- | ----------- |
 | [#3](src/p00xx/p3.rs) | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium     | 4ms, 2.5MB  |
-| [#2](src/p00xx/p1.rs) | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium     | 8ms, 2.3MB  |
-| [#1](src/p00xx/p2.rs) | [Two Sum](https://leetcode.com/problems/two-sum/)            | Easy       | 4ms, 3.3MB  |
+| [#2](src/p00xx/p2.rs) | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium     | 8ms, 2.3MB  |
+| [#1](src/p00xx/p1.rs) | [Two Sum](https://leetcode.com/problems/two-sum/)            | Easy       | 4ms, 3.3MB  |
 

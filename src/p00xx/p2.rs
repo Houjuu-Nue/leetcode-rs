@@ -1,13 +1,15 @@
 //! 
-//! https://leetcode.com/problems/add-two-numbers/
+//! Add Two Numbers
 //! 
+//! https://leetcode.com/problems/add-two-numbers/
+//!
 //! You are given two non-empty linked lists representing two non-negative integers.
 //! The digits are stored in reverse order and each of their nodes contain a single digit.
 //! Add the two numbers and return it as a linked list.
 //!
 //! You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 //!
-//! # Example:
+//! ## Example:
 //! ```ignore
 //! Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 //! Output: 7 -> 0 -> 8
@@ -47,14 +49,14 @@ pub struct Input {
 pub type Answer = Option<Box<ListNode>>;
 
 pub trait Solution {
-    fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Answer;
+    fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>>;
 }
 
 /// Approach 1: Elementary Math.
 pub struct Solution1;
 impl Solution for Solution1 {
 
-    fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Answer {
+    fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 
         let mut digits = vec![];
         let mut carry = 0;
