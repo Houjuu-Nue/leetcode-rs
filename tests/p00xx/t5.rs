@@ -19,11 +19,15 @@ fn t4() {
     let test_cases = [
         TestCase {
             input : String::from("babad"),
-            answer: String::from("bad"),
+            answer: String::from("bab"),
         },
         TestCase {
             input : String::from("cbbd"),
             answer: String::from("bb"),
+        },
+        TestCase {
+            input : String::from("ac"),
+            answer: String::from("a"),
         },
     ];
 
