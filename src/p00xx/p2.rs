@@ -52,9 +52,9 @@ pub trait Solution {
     fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>>;
 }
 
-/// Approach 1: Elementary Math.
-pub struct Solution1;
-impl Solution for Solution1 {
+/// Approach 0: Elementary Math.
+pub struct Solution0;
+impl Solution for Solution0 {
 
     fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
 

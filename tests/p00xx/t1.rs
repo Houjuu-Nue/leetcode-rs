@@ -11,8 +11,8 @@ struct TestCase {
 fn t1() {
 
     let solutions = [
+        Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
-        Box::new(Solution2) as Box<dyn Solution>,
     ];
 
     let test_cases = [

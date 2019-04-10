@@ -6,21 +6,21 @@
 //! Given a string, find the length of the longest substring without repeating characters.
 //! 
 //! ## Example 1:
-//! ```
+//! ```ignore
 //! Input: "abcabcbb"
 //! Output: 3 
 //! Explanation: The answer is "abc", with the length of 3. 
 //! ```
 //! 
 //! ## Example 2:
-//! ```
+//! ```ignore
 //! Input: "bbbbb"
 //! Output: 1
 //! Explanation: The answer is "b", with the length of 1.
 //! ```
 //!
 //! ## Example 3:
-//! ```
+//! ```ignore
 //! Input: "pwwkew"
 //! Output: 3
 //! Explanation: The answer is "wke", with the length of 3.
@@ -35,8 +35,8 @@ pub trait Solution {
     fn length_of_longest_substring(&self, s: String) -> i32;
 }
 
-pub struct Solution1;
-impl Solution for Solution1 {
+pub struct Solution0;
+impl Solution for Solution0 {
 
     fn length_of_longest_substring(&self, s: String) -> i32 {
         
@@ -73,9 +73,9 @@ impl Solution for Solution1 {
     }
 }
 
-// Approach 2: Sliding Window Optimized
-pub struct Solution2;
-impl Solution for Solution2 {
+// Approach 1: Sliding Window Optimized
+pub struct Solution1;
+impl Solution for Solution1 {
 
     fn length_of_longest_substring(&self, s: String) -> i32 {
         
@@ -105,9 +105,9 @@ impl Solution for Solution2 {
     }
 }
 
-// Approach 3: Simplified version of Approach 2.
-pub struct Solution3;
-impl Solution for Solution3 {
+// Approach 2: Simplified version of Approach 1.
+pub struct Solution2;
+impl Solution for Solution2 {
 
     fn length_of_longest_substring(&self, s: String) -> i32 {
         

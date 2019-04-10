@@ -28,9 +28,9 @@ pub trait Solution {
     fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32>;
 }
 
-// Approach 1: Brute Force
-pub struct Solution1;
-impl Solution for Solution1 {
+// Approach 0: Brute Force
+pub struct Solution0;
+impl Solution for Solution0 {
 
     fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
 
@@ -49,9 +49,9 @@ impl Solution for Solution1 {
     }
 }
 
-// Approach 2: One-pass Hash Table
-pub struct Solution2;
-impl Solution for Solution2 {
+// Approach 1: One-pass Hash Table
+pub struct Solution1;
+impl Solution for Solution1 {
 
     fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
 
