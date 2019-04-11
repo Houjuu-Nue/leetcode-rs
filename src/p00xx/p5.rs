@@ -26,7 +26,7 @@ pub trait Solution {
     fn longest_palindrome(&self, s: String) -> String;
 }
 
-// Approach 0: Dynamic Programming(Beta)
+// Approach 0: Dynamic Programming(Beta) ----------------------------------------
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -113,3 +113,57 @@ fn longest(s: &[u8], range: Option<PairRange>) -> Option<PairRange> {
         Some(range)
     }
 }
+
+// -----------------------------------------------------------------------------
+
+
+// Approach 1: Brute Force -----------------------------------------------------
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn longest_palindrome(&self, s: String) -> String {
+
+        let bytes = s.into_bytes();
+        if bytes.len() <= 1 { return String::from_utf8(bytes).unwrap() }
+        
+        let mut max_length = 0;
+        let mut max_left   = 0;
+        let mut max_right  = 0;
+        
+        for i in 0..bytes.len() {
+            for j in i..bytes.len() {
+
+                if is_palindrome(&bytes, i, j) {
+                    let length = j - i + 1;
+                    if length > max_length {
+           
+                        max_length = length;
+                        max_left  = i;
+                        max_right = j;
+                    }
+                }
+            }
+        }
+
+        let sub_bytes = bytes.get(max_left..=max_right)
+            .unwrap().iter().cloned().collect();
+        String::from_utf8(sub_bytes).unwrap()
+    }
+}
+
+fn is_palindrome(s: &[u8], mut left: usize, mut right: usize) -> bool {
+
+    while left < right {
+        if s[left] != s[right] { return false }
+
+        left += 1;
+        if let Some(new_right) = right.checked_sub(1) {
+            right = new_right;
+        } else {
+            return false
+        }
+    }
+
+    true
+}
+// -----------------------------------------------------------------------------
