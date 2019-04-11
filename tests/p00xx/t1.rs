@@ -41,14 +41,15 @@ fn t1() {
 
     for (i, solution) in solutions.into_iter().enumerate() {
 
-        for (j, case) in test_cases.iter().cloned().enumerate() {
+        for (j, test_case) in test_cases.iter().cloned().enumerate() {
 
-            let input = case.input;
-            let answer = case.answer;
-            let test_answer = solution.two_sum(input.nums, input.target);
+            let test_answer = solution.two_sum(test_case.input.nums, test_case.input.target);
             
-            assert_eq!(test_answer, answer,
-                "Test failed on Solution {} TestCase {}", i, j);
+            assert_eq!(test_answer, test_case.answer,
+                "Test failed on Solution {} TestCase {}.\n\
+                Correct  answer is {:?}\n\
+                TestCase answer is {:?}\n",
+                i, j, &test_case.answer, &test_answer);
         }
     }
 }

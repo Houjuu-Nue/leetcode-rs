@@ -37,8 +37,11 @@ fn t3() {
 
             let test_answer = solution.length_of_longest_substring(test_case.input);
 
-            let hint = format!("Test failed on Solution {} TestCase {}.\nCorrect  answer is {}\nTestCase answer is {}\n", i, j, &test_case.answer, &test_answer);
-            assert_eq!(test_answer, test_case.answer, "{}", &hint);
+            assert_eq!(test_answer, test_case.answer,
+                "Test failed on Solution {} TestCase {}.\n\
+                Correct  answer is {}\n\
+                TestCase answer is {}\n",
+                i, j, &test_case.answer, &test_answer);
         }
     }
 }

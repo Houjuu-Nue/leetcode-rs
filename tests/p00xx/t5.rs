@@ -38,8 +38,8 @@ fn t4() {
             let test_answer = solution.longest_palindrome(test_case.input);
 
             assert_eq!(test_answer, test_case.answer,
-                "Test failed on Solution {} TestCase {}.\n
-                Correct  answer is {}\n
+                "Test failed on Solution {} TestCase {}.\n\
+                Correct  answer is {}\n\
                 TestCase answer is {}\n",
                 i, j, &test_case.answer, &test_answer);
         }

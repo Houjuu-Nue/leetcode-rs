@@ -39,8 +39,11 @@ fn t4() {
 
             let test_answer = solution.find_median_sorted_arrays(test_case.input.nums1, test_case.input.nums2);
 
-            let hint = format!("Test failed on Solution {} TestCase {}.\nCorrect  answer is {}\nTestCase answer is {}\n", i, j, &test_case.answer, &test_answer);
-            assert_eq!(test_answer, test_case.answer, "{}", &hint);
+            assert_eq!(test_answer, test_case.answer,
+                "Test failed on Solution {} TestCase {}.\n\
+                Correct  answer is {}\n\
+                TestCase answer is {}\n",
+                i, j, &test_case.answer, &test_answer);
         }
     }
 }
