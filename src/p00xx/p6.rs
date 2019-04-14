@@ -52,8 +52,60 @@ pub struct Solution0;
 impl Solution for Solution0 {
 
     fn convert(&self, s: String, num_rows: i32) -> String {
-        String::from("PAHNAPLSIIGYIR")
+
+        let mut matrix = fill_matrix(s, num_rows as usize);
+        matrix.sort_unstable_by(|ch1, ch2| {
+            ch1.row.cmp(&ch2.row)
+                .then_with(|| ch1.column.cmp(&ch2.column))
+        });
+
+        matrix.into_iter().map(|character| character.ch).collect()
     }
+}
+
+#[derive(Debug, Clone)]
+struct Character {
+    ch: char,
+    row: usize,
+    column: usize,
+}
+
+// input character into matrix.
+fn fill_matrix(s: String, num_rows: usize) -> Vec<Character> {
+
+    let chars: Vec<char> = s.chars().collect();
+
+    // character count for each z loop.
+    let z_loop_count;
+    // column count for each z loop.
+    let z_loop_column;
+
+    if num_rows > 1 {
+        z_loop_count = num_rows + num_rows - 2;
+        z_loop_column = num_rows + 1 - 2;
+    } else {
+        z_loop_count = 1;
+        z_loop_column = 1;
+    }
+
+    chars.into_iter().enumerate()
+        .map(|(i, ch)| {
+
+            let loop_count = i / z_loop_count;
+            let mut column = loop_count * z_loop_column;
+            let row;
+
+            let leave_chars_count = i % z_loop_count + 1;
+            if leave_chars_count <= num_rows {
+                row = leave_chars_count - 1;
+            } else {
+                column += leave_chars_count - num_rows;
+                row = z_loop_column - (column % z_loop_column);
+            }
+
+            Character { ch, row, column }
+
+        }).collect()
 }
 // -----------------------------------------------------------------------------
 

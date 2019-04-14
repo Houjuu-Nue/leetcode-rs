@@ -12,6 +12,7 @@ $ cargo test -- t1 # run test case for problem #1
 
 | #                     | Title                                                        | Difficulty | Best Submit |
 | --------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#6](src/p00xx/p6.rs) | [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) | Medium     | 12ms, 2.6MB |
 | [#5](src/p00xx/p5.rs) | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | Medium     | 8ms, 2.4MB  |
 | [#4](src/p00xx/p4.rs) | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard       | 8ms, 2.5MB  |
 | [#3](src/p00xx/p3.rs) | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium     | 4ms, 2.5MB  |

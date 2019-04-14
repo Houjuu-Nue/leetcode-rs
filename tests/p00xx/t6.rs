@@ -17,18 +17,18 @@ fn t6() {
     let test_cases = [
         TestCase {
             input: Input {
-                s: String::from("PAYPALISHIRING"),
+                s: String::from("LEETCODEISHIRING"),
                 num_rows: 3,
             },
-            answer: String::from("PAHNAPLSIIGYIR"),
+            answer: String::from("LCIRETOESIIGEDHN"),
         },
         TestCase {
             input: Input {
-                s: String::from("PAYPALISHIRING"),
+                s: String::from("LEETCODEISHIRING"),
                 num_rows: 4,
             },
-            answer: String::from("PINALSIGYAHRPI"),
-        },
+            answer: String::from("LDREOEIIECIHNTSG"),
+        }
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {
