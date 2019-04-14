@@ -1,5 +1,5 @@
 
-use leetcode_rs::p00xx::p5::*;
+use leetcode_rs::p00xx::p6::*;
 
 #[derive(Debug, Clone)]
 struct TestCase {
@@ -8,27 +8,26 @@ struct TestCase {
 }
 
 #[test]
-fn t5() {
+fn t6() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        Box::new(Solution1) as Box<dyn Solution>,
-        Box::new(Solution2) as Box<dyn Solution>,
-        Box::new(Solution3) as Box<dyn Solution>,
     ];
 
     let test_cases = [
         TestCase {
-            input : String::from("babad"),
-            answer: String::from("bab"),
+            input: Input {
+                s: String::from("PAYPALISHIRING"),
+                num_rows: 3,
+            },
+            answer: String::from("PAHNAPLSIIGYIR"),
         },
         TestCase {
-            input : String::from("cbbd"),
-            answer: String::from("bb"),
-        },
-        TestCase {
-            input : String::from("ac"),
-            answer: String::from("a"),
+            input: Input {
+                s: String::from("PAYPALISHIRING"),
+                num_rows: 4,
+            },
+            answer: String::from("PINALSIGYAHRPI"),
         },
     ];
 
@@ -36,7 +35,7 @@ fn t5() {
 
         for (j, test_case) in test_cases.iter().cloned().enumerate() {
 
-            let test_answer = solution.longest_palindrome(test_case.input);
+            let test_answer = solution.convert(test_case.input.s, test_case.input.num_rows);
 
             assert_eq!(test_answer, test_case.answer,
                 "Test failed on Solution {} TestCase {}.\n\
