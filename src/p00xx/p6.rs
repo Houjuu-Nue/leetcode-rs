@@ -109,3 +109,57 @@ fn fill_matrix(s: String, num_rows: usize) -> Vec<Character> {
 }
 // -----------------------------------------------------------------------------
 
+
+// Approach 1: Sort by Row -----------------------------------------------------
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn convert(&self, s: String, num_rows: i32) -> String {
+
+        use std::cmp::min;
+
+        let num_rows = num_rows as usize;
+        if num_rows == 1 { return s }
+
+        let mut rows: Vec<String> = (0..min(num_rows, s.len()))
+            .into_iter()
+            .map(|_| String::new())
+            .collect();
+
+        enum Direction {
+            Up(usize),
+            Down(usize),
+        }
+
+        let mut dire = Direction::Down(0);
+
+        for ch in s.chars() {
+            match dire {
+                | Direction::Down(row_index) => {
+
+                    rows[row_index].push(ch);
+
+                    dire = if row_index == num_rows - 1 {
+                        Direction::Up(row_index - 1)
+                    } else {
+                        Direction::Down(row_index + 1)
+                    };
+                },
+                | Direction::Up(row_index) => {
+
+                    rows[row_index].push(ch);
+                    
+                    dire = if row_index == 0 {
+                        Direction::Down(row_index + 1)
+                    } else {
+                        Direction::Up(row_index - 1)
+                    };
+                }
+            }
+        }
+
+        rows.into_iter()
+            .fold(String::new(), |acc, row| acc + &row)
+    }
+}
+// -----------------------------------------------------------------------------
