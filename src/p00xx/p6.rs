@@ -163,3 +163,32 @@ impl Solution for Solution1 {
     }
 }
 // -----------------------------------------------------------------------------
+
+// Approach 2: Visit by Row -----------------------------------------------------
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn convert(&self, s: String, num_rows: i32) -> String {
+
+        if s.len() <= 1 || num_rows == 1 { return s }
+        let num_rows = num_rows as usize;
+
+        let s: Vec<char> = s.chars().collect();
+        let len = s.len();
+        let cycle_len = 2 * num_rows - 2;
+        let mut result = String::new();
+
+        for i in 0..num_rows {
+            for j in (0..len).into_iter().step_by(cycle_len).filter(|j| j + i < len) {
+                
+                result.push(s[i + j]);
+
+                if i != 0 && i != num_rows - 1 && j + cycle_len - i < len {
+                    result.push(s[j + cycle_len - i]);
+                }
+            }
+        }
+
+        result
+    }
+}

@@ -13,22 +13,30 @@ fn t6() {
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution2) as Box<dyn Solution>,
     ];
 
     let test_cases = [
+        // TestCase {
+        //     input: Input {
+        //         s: String::from("LEETCODEISHIRING"),
+        //         num_rows: 3,
+        //     },
+        //     answer: String::from("LCIRETOESIIGEDHN"),
+        // },
+        // TestCase {
+        //     input: Input {
+        //         s: String::from("LEETCODEISHIRING"),
+        //         num_rows: 4,
+        //     },
+        //     answer: String::from("LDREOEIIECIHNTSG"),
+        // },
         TestCase {
             input: Input {
-                s: String::from("LEETCODEISHIRING"),
-                num_rows: 3,
-            },
-            answer: String::from("LCIRETOESIIGEDHN"),
-        },
-        TestCase {
-            input: Input {
-                s: String::from("LEETCODEISHIRING"),
+                s: String::from("PAYPALISHIRING"),
                 num_rows: 4,
             },
-            answer: String::from("LDREOEIIECIHNTSG"),
+            answer: String::from("PINALSIGYAHRPI"),
         }
     ];
 
