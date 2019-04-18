@@ -1,7 +1,11 @@
 
 [package]
-name = "leetcode-rs"
-version = "1.0.0"
-authors = ["usami-renko <usami-ssc@protonmail.com>"]
-edition = "2018"
+name        = "leetcode-rs"
+version     = "1.0.0"
+authors     = ["unknownue <usami-ssc@protonmail.com>"]
+edition     = "2018"
+readme      = "README.md"
+license     = "MIT"
 description = "Solutions to LeetCode problems in Rust."
+repository  = "https://github.com/Houjuu-Nue/gli-rs"
+keywords    = ["leetcode", "algorithm", "Rust"]
