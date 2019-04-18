@@ -41,7 +41,26 @@ pub struct Solution0;
 impl Solution for Solution0 {
 
     fn reverse(&self, x: i32) -> i32 {
-        321
+
+        let is_minus = x < 0;
+        let mut x = x.abs();
+
+        let mut result: i32 = 0;
+
+        while x > 0 {
+            let remainder = x % 10;
+
+            if let Some(mul_result) = result.checked_mul(10) {
+                result = mul_result + remainder;
+            } else {
+                return 0
+            }
+
+            x /= 10;
+        }
+
+        if is_minus { result *= -1; }
+        result
     }
 }
 // -----------------------------------------------------------------------------

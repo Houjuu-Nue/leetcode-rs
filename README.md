@@ -12,6 +12,7 @@ $ cargo test -- t1 # run test case for problem #1
 
 | #                     | Title                                                        | Difficulty | Best Submit |
 | --------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#7](src/p00xx/p7.rs) | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | Eash       | 4ms, 2.3MB  |
 | [#6](src/p00xx/p6.rs) | [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) | Medium     | 8ms, 2.4MB  |
 | [#5](src/p00xx/p5.rs) | [Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/) | Medium     | 8ms, 2.4MB  |
 | [#4](src/p00xx/p4.rs) | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard       | 8ms, 2.5MB  |
