@@ -10,7 +10,7 @@ $ cargo test -- t1 # run test case for problem #1
 
 ## Solutions
 
-| #                     | Title                                                        | Difficulty | Best Submit |
+| #                     | Problem                                                      | Difficulty | Best Submit |
 | --------------------- | ------------------------------------------------------------ | ---------- | ----------- |
 | [#7](src/p00xx/p7.rs) | [Reverse Integer](https://leetcode.com/problems/reverse-integer/) | Eash       | 4ms, 2.3MB  |
 | [#6](src/p00xx/p6.rs) | [ZigZag Conversion](https://leetcode.com/problems/zigzag-conversion/) | Medium     | 8ms, 2.4MB  |

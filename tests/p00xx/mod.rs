@@ -6,3 +6,4 @@
 #[cfg(test)] pub mod t5;
 #[cfg(test)] pub mod t6;
 #[cfg(test)] pub mod t7;
+#[cfg(test)] pub mod t8;
