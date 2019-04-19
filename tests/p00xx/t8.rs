@@ -31,10 +31,6 @@ fn t8() {
             input : String::from("words and 987"),
             answer: 0,
         },
-        TestCase {
-            input : String::from("-91283472332"),
-            answer: -2147483648,
-        },
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {

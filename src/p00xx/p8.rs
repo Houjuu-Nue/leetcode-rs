@@ -16,7 +16,10 @@
 //! Note:
 //!
 //! Only the space character ' ' is considered as whitespace character.
-//! Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1]. If the numerical value is out of the range of representable values, INT_MAX (2^31 − 1) or INT_MIN (−2^31) is returned.
+//!
+//! Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−2^31,  2^31 − 1].
+//!
+//! If the numerical value is out of the range of representable values, INT_MAX (2^31 − 1) or INT_MIN (−2^31) is returned.
 //!
 //! ## Example 1:
 //! ```ignore
@@ -58,7 +61,6 @@
 pub type Input  = String;
 pub type Output = i32;
 
-
 pub trait Solution {
     fn my_atoi(&self, str: String) -> i32;
 }
@@ -69,7 +71,48 @@ pub struct Solution0;
 impl Solution for Solution0 {
 
     fn my_atoi(&self, str: String) -> i32 {
-        0
+
+        use std::i32;
+
+        let mut chars = str.trim()
+            .chars()
+            .peekable();
+
+        let first_char = chars.peek();
+        let sign: i32 = match first_char {
+            | Some('+') => {
+                chars.next();
+                1
+            },
+            | Some('-') => {
+                chars.next();
+                -1
+            },
+            | _ => 1,
+        };
+
+        let mut result: i32 = 0;
+        const BOUNDARY1: i32 = i32::max_value() / 10;
+        const BOUNDARY2: i32 = i32::max_value() % 10;
+
+        while let Some(ch) = chars.next() {
+            if let Some(digit) = ch.to_digit(10).map(|v| v as i32) {
+
+                if result < BOUNDARY1 || (result == BOUNDARY1 && digit <= BOUNDARY2) {
+                    result = result * 10 + digit;
+                } else {
+                    if sign == 1 {
+                        return i32::max_value()
+                    } else {
+                        return i32::min_value()
+                    }
+                }
+            } else {
+                break
+            }
+        }
+
+        result * sign
     }
 }
 // -----------------------------------------------------------------------------
