@@ -68,3 +68,43 @@ impl Solution for Solution0 {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// Approach 1: Convert the number into string.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn is_palindrome(&self, x: i32) -> bool {
+        
+        if x < 0 { return false }
+        
+        let x: String = x.to_string();
+        let x_rev: String = x.chars().rev().collect();
+
+        x == x_rev
+    }
+}
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+// Approach 2: Revert half of the number.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn is_palindrome(&self, x: i32) -> bool {
+        
+        if x < 0 || (x % 10 == 0 && x != 0) { return false }
+        
+        let mut x   = x;
+        let mut rev = 0;
+
+        while x > rev {
+            rev = rev * 10 + x % 10;
+            x /= 10;
+        }
+        
+        x == rev || x == rev / 10
+    }
+}
+// -----------------------------------------------------------------------------
