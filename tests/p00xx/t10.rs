@@ -50,6 +50,48 @@ fn t10() {
             },
             answer: false,
         },
+        TestCase {
+            input : Input {
+                s: String::from("ab"),
+                p: String::from(".*c"),
+            },
+            answer: false,
+        },
+        TestCase {
+            input : Input {
+                s: String::from("aaa"),
+                p: String::from("a*a"),
+            },
+            answer: true,
+        },
+        TestCase {
+            input : Input {
+                s: String::from("a"),
+                p: String::from("ab*"),
+            },
+            answer: true,
+        },
+        TestCase {
+            input : Input {
+                s: String::from("aaa"),
+                p: String::from("aaaa"),
+            },
+            answer: false,
+        },
+        TestCase {
+            input : Input {
+                s: String::from("bbbba"),
+                p: String::from(".*a*a"),
+            },
+            answer: true,
+        },
+        TestCase {
+            input : Input {
+                s: String::from("ab"),
+                p: String::from(".*.."),
+            },
+            answer: true,
+        },
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {

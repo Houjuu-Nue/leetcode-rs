@@ -79,7 +79,56 @@ pub trait Solution {
 pub struct Solution0;
 impl Solution for Solution0 {
     fn is_match(&self, s: String, p: String) -> bool {
-        s == p
+        
+        let s: Vec<char> = s.chars().collect();
+        let p: Vec<char> = p.chars().collect();
+
+        is_match_mirror(&s, 0, &p, 0)
+    }
+}
+
+fn is_match_mirror(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
+
+    match (s_start == s.len(), p_start == p.len()) {
+        | (true,  true)  => return true,
+        | (false, true)  => return false,
+        | (true,  false) => {
+            return match p[p_start] {
+                | '*' => is_match_mirror(s, s_start, p, p_start + 1),
+                | _ => {
+                    if p_start + 1 < p.len() && p[p_start + 1] == '*' {
+                        is_match_mirror(s, s_start, p, p_start + 2)
+                    } else {
+                        false
+                    }
+                },
+            }
+        },
+        | (false, false) => {},
+    }
+    
+    match p[p_start] {
+        | '*' => {
+            if s[s_start] == p[p_start - 1] || p[p_start - 1] == '.' {
+                is_match_mirror(s, s_start + 1, p, p_start) ||
+                is_match_mirror(s, s_start, p, p_start + 1)
+            } else {
+                is_match_mirror(s, s_start, p, p_start + 1)
+            }
+        },
+        | ch if ch == '.' || ch == s[s_start] => {
+            is_match_mirror(s, s_start + 1, p, p_start + 1) || {
+                if p_start + 1 < p.len() && p[p_start + 1] == '*' {
+                    is_match_mirror(s, s_start, p, p_start + 2)
+                } else {
+                    false
+                }
+            }
+        },
+        | _ if p_start + 1 < p.len() && p[p_start + 1] == '*' => {
+            is_match_mirror(s, s_start, p, p_start + 2)
+        },
+        | _ => false,
     }
 }
 // -----------------------------------------------------------------------------
