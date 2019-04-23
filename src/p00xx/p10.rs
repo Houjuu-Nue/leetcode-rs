@@ -172,3 +172,41 @@ fn is_match_v1(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// Approach 2: Dynamic Programming(Bottom-Up Variation)
+pub struct Solution2;
+impl Solution for Solution2 {
+    fn is_match(&self, s: String, p: String) -> bool {
+        
+        if p.is_empty() { return s.is_empty() }
+        
+        let s: Vec<char> = s.chars().collect();
+        let p: Vec<char> = p.chars().collect();
+
+        is_match_v2(&s, &p)
+    }
+}
+
+fn is_match_v2(s: &[char], p: &[char]) -> bool {
+
+    let mut states = vec![vec![false; p.len() + 1]; s.len() + 1];
+    states[s.len()][p.len()] = true;
+
+    for i in (0..=s.len()).rev() {
+        for j in (0..=(p.len() - 1)).rev() {
+
+            let first_match = i < s.len() && (p[j] == s[i] || p[j] == '.');
+            
+            states[i][j] = if j + 1 < p.len() && p[j + 1] == '*' {
+                states[i][j + 2] || (first_match && states[i + 1][j])
+            } else {
+                first_match && states[i + 1][j + 1]
+            };
+        }
+    }
+
+    states[0][0]
+}
+// -----------------------------------------------------------------------------

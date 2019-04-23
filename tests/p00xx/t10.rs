@@ -13,6 +13,7 @@ fn t10() {
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution2) as Box<dyn Solution>,
     ];
 
     let test_cases = [
@@ -88,10 +89,10 @@ fn t10() {
         },
         TestCase {
             input : Input {
-                s: String::from("ab"),
-                p: String::from(".*.."),
+                s: String::from("a"),
+                p: String::from(""),
             },
-            answer: true,
+            answer: false,
         },
     ];
 
