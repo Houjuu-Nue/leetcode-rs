@@ -83,21 +83,21 @@ impl Solution for Solution0 {
         let s: Vec<char> = s.chars().collect();
         let p: Vec<char> = p.chars().collect();
 
-        is_match_mirror(&s, 0, &p, 0)
+        is_match_v0(&s, 0, &p, 0)
     }
 }
 
-fn is_match_mirror(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
+fn is_match_v0(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
 
     match (s_start == s.len(), p_start == p.len()) {
         | (true,  true)  => return true,
         | (false, true)  => return false,
         | (true,  false) => {
             return match p[p_start] {
-                | '*' => is_match_mirror(s, s_start, p, p_start + 1),
+                | '*' => is_match_v0(s, s_start, p, p_start + 1),
                 | _ => {
                     if p_start + 1 < p.len() && p[p_start + 1] == '*' {
-                        is_match_mirror(s, s_start, p, p_start + 2)
+                        is_match_v0(s, s_start, p, p_start + 2)
                     } else {
                         false
                     }
@@ -110,25 +110,65 @@ fn is_match_mirror(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bo
     match p[p_start] {
         | '*' => {
             if s[s_start] == p[p_start - 1] || p[p_start - 1] == '.' {
-                is_match_mirror(s, s_start + 1, p, p_start) ||
-                is_match_mirror(s, s_start, p, p_start + 1)
+                is_match_v0(s, s_start + 1, p, p_start) ||
+                is_match_v0(s, s_start, p, p_start + 1)
             } else {
-                is_match_mirror(s, s_start, p, p_start + 1)
+                is_match_v0(s, s_start, p, p_start + 1)
             }
         },
         | ch if ch == '.' || ch == s[s_start] => {
-            is_match_mirror(s, s_start + 1, p, p_start + 1) || {
+            is_match_v0(s, s_start + 1, p, p_start + 1) || {
                 if p_start + 1 < p.len() && p[p_start + 1] == '*' {
-                    is_match_mirror(s, s_start, p, p_start + 2)
+                    is_match_v0(s, s_start, p, p_start + 2)
                 } else {
                     false
                 }
             }
         },
         | _ if p_start + 1 < p.len() && p[p_start + 1] == '*' => {
-            is_match_mirror(s, s_start, p, p_start + 2)
+            is_match_v0(s, s_start, p, p_start + 2)
         },
         | _ => false,
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+// Approach 1: Recursion(Simpified version of Approach 0)
+pub struct Solution1;
+impl Solution for Solution1 {
+    fn is_match(&self, s: String, p: String) -> bool {
+        
+        let s: Vec<char> = s.chars().collect();
+        let p: Vec<char> = p.chars().collect();
+
+        is_match_v1(&s, 0, &p, 0)
+    }
+}
+
+fn is_match_v1(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
+
+    if p_start >= p.len() {
+        return s_start == s.len()
+    } else if s_start == s.len() {
+        if p[p_start] == '*' || (p_start + 1 < p.len() && p[p_start + 1] == '*') {
+            return is_match_v1(s, s_start, p, p_start + 1)
+        } else {
+            return false
+        }
+    }
+
+    let s1 = s[s_start];
+    let p1 = p[p_start];
+
+    if p_start + 1 < p.len() &&  p[p_start + 1] == '*' {
+        is_match_v1(s, s_start, p, p_start + 2) ||
+        ((s1 == p1 || p1 == '.') && is_match_v1(s, s_start + 1, p, p_start))
+    } else if p1 == '.' || s1 == p1 {
+        is_match_v1(s, s_start + 1, p, p_start + 1)
+    } else {
+        false
     }
 }
 // -----------------------------------------------------------------------------
