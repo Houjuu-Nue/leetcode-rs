@@ -4,20 +4,21 @@
 //! https://leetcode.com/problems/regular-expression-matching/
 //!
 //! Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
-//! ```ignore
+//!
+//! ```text
 //! '.' Matches any single character.
 //! '*' Matches zero or more of the preceding element.
 //! ```
 //! The matching should cover the entire input string (not partial).
 //! 
 //! Note:
-//! ```ignore
+//! ```text
 //! s could be empty and contains only lowercase letters a-z.
 //! p could be empty and contains only lowercase letters a-z, and characters like . or *.
 //! ```
 //! 
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! Input:
 //! s = "aa"
 //! p = "a"
@@ -26,7 +27,7 @@
 //! ```
 //!
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! Input:
 //! s = "aa"
 //! p = "a*"
@@ -36,7 +37,7 @@
 //! ```
 //! 
 //! ## Example 3:
-//! ```ignore
+//! ```text
 //! Input:
 //! s = "ab"
 //! p = ".*"
@@ -45,7 +46,7 @@
 //! ```
 //! 
 //! ## Example 4:
-//! ```ignore
+//! ```text
 //! Input:
 //! s = "aab"
 //! p = "c*a*b"
@@ -54,7 +55,7 @@
 //! ```
 //! 
 //! ## Example 5:
-//! ```ignore
+//! ```text
 //! Input:
 //! s = "mississippi"
 //! p = "mis*is*p*."
