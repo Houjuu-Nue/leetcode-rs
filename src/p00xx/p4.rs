@@ -10,7 +10,7 @@
 //! You may assume nums1 and nums2 cannot be both empty.
 //!
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! nums1 = [1, 3]
 //! nums2 = [2]
 //!  
@@ -18,7 +18,7 @@
 //! ```
 //!
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! nums1 = [1, 2]
 //! nums2 = [3, 4]
 //! 
@@ -38,7 +38,8 @@ pub trait Solution {
     fn find_median_sorted_arrays(&self, nums1: Vec<i32>, nums2: Vec<i32>) -> f64;
 }
 
-// Approach 0: Merge and select the median.
+// -----------------------------------------------------------------------------
+/// Approach 0: Merge and select the median.
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -73,9 +74,11 @@ fn merge_nums(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
 
     nums
 }
+// -----------------------------------------------------------------------------
 
 
-// Approach 1: Improve of Approach 0, Count number from min to median
+// -----------------------------------------------------------------------------
+/// Approach 1: Improve of Approach 0, Count number from min to median
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -147,9 +150,11 @@ impl Solution for Solution1 {
         }
     }
 }
+// -----------------------------------------------------------------------------
 
 
-// Approach 2: Discard k / 2 elements each loop.
+// -----------------------------------------------------------------------------
+/// Approach 2: Discard k / 2 elements each loop.
 pub struct Solution2;
 impl Solution for Solution2 {
 
@@ -205,3 +210,4 @@ fn find_k_th(nums1: &[i32], start1: usize, nums2: &[i32], start2: usize, k: usiz
         }
     }
 }
+// -----------------------------------------------------------------------------

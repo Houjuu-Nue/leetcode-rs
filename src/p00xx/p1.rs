@@ -8,7 +8,7 @@
 //! You may assume that each input would have exactly one solution, and you may not use the same element twice.
 //!
 //! ## Example:
-//! ```ignore
+//! ```text
 //! Given nums = [2, 7, 11, 15], target = 9,
 //!
 //! Because nums[0] + nums[1] = 2 + 7 = 9,
@@ -28,7 +28,7 @@ pub trait Solution {
     fn two_sum(&self, nums: Vec<i32>, target: i32) -> Vec<i32>;
 }
 
-// Approach 0: Brute Force
+/// Approach 0: Brute Force
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -49,7 +49,8 @@ impl Solution for Solution0 {
     }
 }
 
-// Approach 1: One-pass Hash Table
+// -----------------------------------------------------------------------------
+/// Approach 1: One-pass Hash Table
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -73,3 +74,4 @@ impl Solution for Solution1 {
         panic!("Solution failed.")
     }
 }
+// -----------------------------------------------------------------------------

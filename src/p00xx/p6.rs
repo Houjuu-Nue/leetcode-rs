@@ -5,7 +5,7 @@
 //!
 //! The string `"PAYPALISHIRING"` is written in a zigzag pattern on a given number of rows like this: (you may want to display this pattern in a fixed font for better legibility)
 //! 
-//! ```ignore
+//! ```text
 //! P   A   H   N
 //! A P L S I I G
 //! Y   I   R
@@ -18,13 +18,13 @@
 //! string convert(string s, int numRows);
 //! 
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! Input: s = "PAYPALISHIRING", numRows = 3
 //! Output: "PAHNAPLSIIGYIR"
 //! ```
 //! 
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! Input: s = "PAYPALISHIRING", numRows = 4
 //! Output: "PINALSIGYAHRPI"
 //! Explanation:
@@ -48,6 +48,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
+/// Approach 0
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -110,7 +111,8 @@ fn fill_matrix(s: String, num_rows: usize) -> Vec<Character> {
 // -----------------------------------------------------------------------------
 
 
-// Approach 1: Sort by Row -----------------------------------------------------
+// -----------------------------------------------------------------------------
+/// Approach 1: Sort by Row
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -164,7 +166,9 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
-// Approach 2: Visit by Row -----------------------------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Visit by Row
 pub struct Solution2;
 impl Solution for Solution2 {
 

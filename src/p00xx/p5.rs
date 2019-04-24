@@ -6,14 +6,14 @@
 //! Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
 //! 
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! Input: "babad"
 //! Output: "bab"
 //! Note: "aba" is also a valid answer.
 //! ``` 
 //!
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! Input: "cbbd"
 //! Output: "bb"
 //! ```
@@ -26,7 +26,8 @@ pub trait Solution {
     fn longest_palindrome(&self, s: String) -> String;
 }
 
-// Approach 0: Dynamic Programming Version 1 ----------------------------------
+// -----------------------------------------------------------------------------
+/// Approach 0: Dynamic Programming Version 1
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -76,7 +77,9 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
-// Approach 1: Dynamic Programming Version 2 -----------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Dynamic Programming Version 2
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -116,7 +119,8 @@ impl Solution for Solution1 {
 // -----------------------------------------------------------------------------
 
 
-// Approach 2: Brute Force -----------------------------------------------------
+// -----------------------------------------------------------------------------
+/// Approach 2: Brute Force
 pub struct Solution2;
 impl Solution for Solution2 {
 
@@ -168,7 +172,7 @@ fn is_palindrome(s: &[u8], mut left: usize, mut right: usize) -> bool {
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-// Approach 3: Expand Around Center
+/// Approach 3: Expand Around Center
 pub struct Solution3;
 impl Solution for Solution3 {
 

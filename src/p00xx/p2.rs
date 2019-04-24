@@ -10,7 +10,7 @@
 //! You may assume the two numbers do not contain any leading zero, except the number 0 itself.
 //!
 //! ## Example:
-//! ```ignore
+//! ```text
 //! Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
 //! Output: 7 -> 0 -> 8
 //! Explanation: 342 + 465 = 807.
@@ -52,6 +52,7 @@ pub trait Solution {
     fn add_two_numbers(&self, l1: Option<Box<ListNode>>, l2: Option<Box<ListNode>>) -> Option<Box<ListNode>>;
 }
 
+// -----------------------------------------------------------------------------
 /// Approach 0: Elementary Math.
 pub struct Solution0;
 impl Solution for Solution0 {
@@ -143,3 +144,4 @@ pub fn list_node_to_vec(list: &Option<Box<ListNode>>) -> Vec<i32> {
 
     result
 }
+// -----------------------------------------------------------------------------

@@ -7,20 +7,20 @@
 //! An integer is a palindrome when it reads the same backward as forward.
 //! 
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! Input: 121
 //! Output: tru
 //! ```
 //! 
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! Input: -121
 //! Output: false
 //! Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
 //! ```
 //! 
 //! ## Example 3:
-//! ```ignore
+//! ```text
 //! Input: 10
 //! Output: false
 //! Explanation: Reads 01 from right to left. Therefore it is not a palindrome.
@@ -36,7 +36,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-// Approach 0: Convert the number into digits.
+/// Approach 0: Convert the number into digits.
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -71,7 +71,7 @@ impl Solution for Solution0 {
 
 
 // -----------------------------------------------------------------------------
-// Approach 1: Convert the number into string.
+/// Approach 1: Convert the number into string.
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -88,7 +88,7 @@ impl Solution for Solution1 {
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-// Approach 2: Revert half of the number.
+/// Approach 2: Revert half of the number.
 pub struct Solution2;
 impl Solution for Solution2 {
 

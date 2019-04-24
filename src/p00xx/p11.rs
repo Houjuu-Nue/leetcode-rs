@@ -37,7 +37,7 @@ fn area(heights: &[i32], i: usize, j: usize) -> i32 {
 }
 
 // -----------------------------------------------------------------------------
-// Approach 0: Brute force
+/// Approach 0: Brute force
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -62,7 +62,7 @@ impl Solution for Solution0 {
 
 
 // -----------------------------------------------------------------------------
-// Approach 1: Two Pointer Approach
+/// Approach 1: Two Pointer Approach
 pub struct Solution1;
 impl Solution for Solution1 {
 

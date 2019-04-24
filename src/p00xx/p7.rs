@@ -6,19 +6,19 @@
 //! Given a 32-bit signed integer, reverse digits of an integer.
 //!
 //! ## Example 1:
-//! ```ignore
+//! ```text
 //! Input: 123
 //! Output: 321
 //! ```
 //!
 //! ## Example 2:
-//! ```ignore
+//! ```text
 //! Input: -123
 //! Output: -321
 //! ```
 //!
 //! ## Example 3:
-//! ```ignore
+//! ```text
 //! Input: 120
 //! Output: 21
 //! ```
@@ -37,7 +37,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-// Approach 0: Pop and Push Digits & Check before Overflow.
+/// Approach 0: Pop and Push Digits & Check before Overflow.
 pub struct Solution0;
 impl Solution for Solution0 {
 
