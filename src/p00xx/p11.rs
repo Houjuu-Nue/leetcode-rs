@@ -29,6 +29,13 @@ pub trait Solution {
     fn max_area(&self, height: Vec<i32>) -> i32;
 }
 
+
+#[inline(always)]
+fn area(heights: &[i32], i: usize, j: usize) -> i32 {
+    use std::cmp::min;
+    min(heights[i], heights[j]) * ((j - i) as i32)
+}
+
 // -----------------------------------------------------------------------------
 // Approach 0: Brute force
 pub struct Solution0;
@@ -51,10 +58,36 @@ impl Solution for Solution0 {
         max_area
     }
 }
+// -----------------------------------------------------------------------------
 
-#[inline]
-fn area(heights: &[i32], i: usize, j: usize) -> i32 {
-    use std::cmp::min;
-    min(heights[i], heights[j]) * ((j - i) as i32)
+
+// -----------------------------------------------------------------------------
+// Approach 1: Two Pointer Approach
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn max_area(&self, height: Vec<i32>) -> i32 {
+
+        use std::cmp::max;
+        
+        let mut i = 0;
+        let mut j = height.len() - 1;
+
+        let mut max_area = 0;
+
+        while i < j {
+            if height[i] > height[j] {
+                let cur_area = height[j] * ((j - i) as i32);
+                max_area = max(max_area, cur_area);
+                j -= 1;
+            } else {
+                let cur_area = height[i] * ((j - i) as i32);
+                max_area = max(max_area, cur_area);
+                i += 1;
+            }
+        }
+
+        max_area
+    }
 }
 // -----------------------------------------------------------------------------
