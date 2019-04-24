@@ -30,13 +30,31 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-// Approach 0
+// Approach 0: Brute force
 pub struct Solution0;
 impl Solution for Solution0 {
 
     fn max_area(&self, height: Vec<i32>) -> i32 {
-        
-        height[0]
+
+        let mut max_area = 0;
+
+        for i in 0..height.len() {
+            for j in (i + 1)..height.len() {
+
+                let cur_area = area(&height, i, j);
+                if cur_area > max_area {
+                    max_area = cur_area;
+                }
+            }
+        }
+
+        max_area
     }
+}
+
+#[inline]
+fn area(heights: &[i32], i: usize, j: usize) -> i32 {
+    use std::cmp::min;
+    min(heights[i], heights[j]) * ((j - i) as i32)
 }
 // -----------------------------------------------------------------------------
