@@ -75,12 +75,77 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: enumerate all situation
 pub struct Solution0;
 impl Solution for Solution0 {
 
     fn int_to_roman(&self, num: i32) -> String {
-        num.to_string()
+
+        let mut num = num;
+        let mut numbers = Vec::new();
+
+        let digit1 = num % 10;
+        match digit1 {
+            | 1 => numbers.push(String::from("I")),
+            | 2 => numbers.push(String::from("II")),
+            | 3 => numbers.push(String::from("III")),
+            | 4 => numbers.push(String::from("IV")),
+            | 5 => numbers.push(String::from("V")),
+            | 6 => numbers.push(String::from("VI")),
+            | 7 => numbers.push(String::from("VII")),
+            | 8 => numbers.push(String::from("VIII")),
+            | 9 => numbers.push(String::from("IX")),
+            | _ => {},
+        }
+        num /= 10;
+
+        if num > 0 {
+            let digit2 = num % 10;
+            match digit2 {
+                | 1 => numbers.push(String::from("X")),
+                | 2 => numbers.push(String::from("XX")),
+                | 3 => numbers.push(String::from("XXX")),
+                | 4 => numbers.push(String::from("XL")),
+                | 5 => numbers.push(String::from("L")),
+                | 6 => numbers.push(String::from("LX")),
+                | 7 => numbers.push(String::from("LXX")),
+                | 8 => numbers.push(String::from("LXXX")),
+                | 9 => numbers.push(String::from("XC")),
+                | _ => {},
+            }
+            num /= 10;
+        }
+
+        if num > 0 {
+            let digit3 = num % 10;
+            match digit3 {
+                | 1 => numbers.push(String::from("C")),
+                | 2 => numbers.push(String::from("CC")),
+                | 3 => numbers.push(String::from("CCC")),
+                | 4 => numbers.push(String::from("CD")),
+                | 5 => numbers.push(String::from("D")),
+                | 6 => numbers.push(String::from("DC")),
+                | 7 => numbers.push(String::from("DCC")),
+                | 8 => numbers.push(String::from("DCCC")),
+                | 9 => numbers.push(String::from("CM")),
+                | _ => {},
+            }
+            num /= 10;
+        }
+
+        if num > 0 {
+            let digit4 = num % 10;
+            match digit4 {
+                | 1 => numbers.push(String::from("M")),
+                | 2 => numbers.push(String::from("MM")),
+                | 3 => numbers.push(String::from("MMM")),
+                | _ => {},
+            }
+        }
+
+        numbers.into_iter()
+            .rev()
+            .fold(String::new(), |sum, number| sum + &number)
     }
 }
 // -----------------------------------------------------------------------------
