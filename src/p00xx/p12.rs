@@ -149,3 +149,26 @@ impl Solution for Solution0 {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Simplified version of Approach 0
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn int_to_roman(&self, num: i32) -> String {
+
+        const M: [&str; 4]  = ["", "M", "MM", "MMM"];
+        const C: [&str; 10] = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
+        const X: [&str; 10] = ["", "X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"];
+        const I: [&str; 10] = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"];
+
+        let digit1 = (num / 1000) as usize;
+        let digit2 = ((num % 1000) / 100) as usize;
+        let digit3 = ((num % 100) / 10) as usize;
+        let digit4 = (num % 10) as usize;
+
+        String::new() + M[digit1] + C[digit2] + X[digit3] + I[digit4]
+    }
+}
+// -----------------------------------------------------------------------------
