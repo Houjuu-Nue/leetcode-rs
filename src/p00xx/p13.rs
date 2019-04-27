@@ -74,12 +74,59 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: Enumerate all situations.
 pub struct Solution0;
 impl Solution for Solution0 {
 
     fn roman_to_int(&self, s: String) -> i32 {
-        0
+        
+        let mut s = s.chars().peekable();
+        let mut sum = 0;
+
+        while let Some(ch) = s.next() {
+            match ch {
+                | 'M' => sum += 1000,
+                | 'D' => sum += 500,
+                | 'C' => {
+                    if let Some(next) = s.peek() {
+                        match next {
+                            'M' => { sum += 900; s.next(); continue; },
+                            'D' => { sum += 400; s.next(); continue; },
+                            _   => {},
+                        }
+                    }
+
+                    sum += 100;
+                },
+                | 'L' => sum += 50,
+                | 'X' => {
+                    if let Some(next) = s.peek() {
+                        match next {
+                            'C' => { sum += 90; s.next(); continue; },
+                            'L' => { sum += 40; s.next(); continue; },
+                             _  => {},
+                        }
+                    }
+
+                    sum += 10;
+                },
+                | 'V' => sum += 5,
+                | 'I' => {
+                    if let Some(next) = s.peek() {
+                        match next {
+                            'X' => { sum += 9; s.next(); continue; },
+                            'V' => { sum += 4; s.next(); continue; },
+                             _  => {},
+                        }
+                    }
+
+                    sum += 1;
+                },
+                | _ => {},
+            }
+        }
+
+        sum
     }
 }
 // -----------------------------------------------------------------------------

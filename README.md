@@ -10,8 +10,9 @@ $ cargo test -- t1 # run test case for problem #1
 
 ## Solutions
 
-| #                       | Problem                                  | Difficulty | Best Submit |
-| ----------------------- | ---------------------------------------- | ---------- | ----------- |
+| #                       | Problem                                                      | Difficulty | Best Submit |
+| ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#13](src/p00xx/p13.rs) | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy       | 12ms, 2MB   |
 | [#12](src/p00xx/p12.rs) | [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium     | 16ms, 2.1MB |
 | [#11](src/p00xx/p11.rs) | [Container With Most Water](https://leetcode.com/problems/container-with-most-water/) | Medium     | 0ms, 2.9MB  |
 | [#10](src/p00xx/p10.rs) | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/) | Hard       | 0ms, 2.4MB  |
@@ -23,5 +24,5 @@ $ cargo test -- t1 # run test case for problem #1
 | [#4](src/p00xx/p4.rs)   | [Median of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/) | Hard       | 8ms, 2.5MB  |
 | [#3](src/p00xx/p3.rs)   | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium     | 4ms, 2.5MB  |
 | [#2](src/p00xx/p2.rs)   | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium     | 8ms, 2.3MB  |
-| [#1](src/p00xx/p1.rs)   | [Two Sum](https://leetcode.com/problems/two-sum/) | Easy       | 4ms, 3.3MB  |
+| [#1](src/p00xx/p1.rs)   | [Two Sum](https://leetcode.com/problems/two-sum/)            | Easy       | 4ms, 3.3MB  |
 
