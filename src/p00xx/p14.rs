@@ -29,12 +29,32 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: Brute Force.
 pub struct Solution0;
 impl Solution for Solution0 {
 
     fn longest_common_prefix(&self, strs: Vec<String>) -> String {
-        strs[0].clone()
+
+        let mut strs: Vec<_> = strs.into_iter()
+            .map(|s| s.into_bytes().into_iter())
+            .collect();
+        let mut test_str = if let Some(s) = strs.pop() { s } else { return String::new() };
+        let mut result = String::new();
+
+        while let Some(ch) = test_str.next() {
+            for s in strs.iter_mut() {
+
+                match s.next() {
+                    | Some(c) if c != ch => return result,
+                    | None => return result,
+                    | _ => {},
+                }
+            }
+            
+            result.push(ch as char);
+        }
+        
+        result
     }
 }
 // -----------------------------------------------------------------------------
