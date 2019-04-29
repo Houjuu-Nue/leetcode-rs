@@ -58,3 +58,25 @@ impl Solution for Solution0 {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Horizontal scanning.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn longest_common_prefix(&self, mut strs: Vec<String>) -> String {
+
+        let mut prefix = if let Some(s) = strs.pop() { s } else { return String::new() };
+
+        for s in strs {
+            while s.starts_with(&prefix) == false {
+                prefix.pop();
+                if prefix.is_empty() { return String::new() }
+            }
+        }
+        
+        prefix
+    }
+}
+// -----------------------------------------------------------------------------

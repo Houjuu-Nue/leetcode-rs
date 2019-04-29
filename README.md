@@ -5,7 +5,7 @@ Solutions to LeetCode problems in Rust.
 ## Run Test case
 
 ```shell
-$ cargo test -- t1 # run test case for problem #1
+cargo test -- t1 # run test case for problem #1
 ```
 
 ## Solutions
