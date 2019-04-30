@@ -129,3 +129,45 @@ fn prefix<'a, 'b>(s1: &'a [u8], s2: &'a [u8]) -> &'b [u8]
     &s1[0..min_len]
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 3: Binary search.
+pub struct Solution3;
+impl Solution for Solution3 {
+
+    fn longest_common_prefix(&self, strs: Vec<String>) -> String {
+
+        if strs.is_empty() { return String::new() }
+        let min_len = strs.iter()
+            .map(|s| s.len())
+            .min()
+            .unwrap();
+        
+        let mut low = 1;
+        let mut high = min_len;
+
+        while low <= high {
+            let middle = (low + high) / 2;
+            if is_common_prefix(&strs, middle) {
+                low = middle + 1;
+            } else {
+                high = middle - 1;
+            }
+        }
+
+        let end = (low + high) / 2;
+        strs[0][0..end].to_string()
+    }
+}
+
+fn is_common_prefix(strs: &[String], middle: usize) -> bool {
+
+    let prefix = unsafe {
+        strs[0].get_unchecked(0..middle)
+    };
+
+    strs.iter()
+        .all(|s| s.starts_with(prefix))
+}
+// -----------------------------------------------------------------------------
