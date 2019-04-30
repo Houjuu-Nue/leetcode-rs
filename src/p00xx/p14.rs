@@ -29,7 +29,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0: Brute Force.
+/// Approach 0: Vertical scanning.
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -78,5 +78,54 @@ impl Solution for Solution1 {
         
         prefix
     }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Divide and conquer.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn longest_common_prefix(&self, strs: Vec<String>) -> String {
+
+        if strs.is_empty() { return String::new() }
+
+        let strs: Vec<_> = strs.into_iter()
+            .map(|s| s.into_bytes())
+            .collect();
+        let prefix = longest_common_prefix_(&strs).to_vec();
+        unsafe { String::from_utf8_unchecked(prefix) }
+    }
+}
+
+fn longest_common_prefix_<'a, 'b>(strs: &'a [Vec<u8>]) -> &'b [u8]
+    where 'a: 'b {
+
+    let len = strs.len();
+
+    if len == 1 {
+        &strs[0]
+    } else {
+        let middle = strs.len() / 2;
+        let s1 = longest_common_prefix_(&strs[0..middle]);
+        let s2 = longest_common_prefix_(&strs[middle..len]);
+        prefix(s1, s2)
+    }
+}
+
+fn prefix<'a, 'b>(s1: &'a [u8], s2: &'a [u8]) -> &'b [u8]
+    where 'a: 'b {
+    
+    use std::cmp::min;
+    let min_len = min(s1.len(), s2.len());
+    
+    for i in 0..min_len {
+        if s1[i] != s2[i] {
+            return &s1[0..i]
+        }
+    }
+
+    &s1[0..min_len]
 }
 // -----------------------------------------------------------------------------
