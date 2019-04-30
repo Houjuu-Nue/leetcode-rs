@@ -67,12 +67,19 @@ impl Solution for Solution1 {
 
     fn longest_common_prefix(&self, mut strs: Vec<String>) -> String {
 
-        let mut prefix = if let Some(s) = strs.pop() { s } else { return String::new() };
+        let mut prefix = if let Some(s) = strs.pop() {
+            s
+        } else {
+            return String::new()
+        };
 
         for s in strs {
             while s.starts_with(&prefix) == false {
                 prefix.pop();
-                if prefix.is_empty() { return String::new() }
+
+                if prefix.is_empty() {
+                    return String::new()
+                }
             }
         }
         
@@ -139,6 +146,7 @@ impl Solution for Solution3 {
     fn longest_common_prefix(&self, strs: Vec<String>) -> String {
 
         if strs.is_empty() { return String::new() }
+        
         let min_len = strs.iter()
             .map(|s| s.len())
             .min()

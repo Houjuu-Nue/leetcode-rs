@@ -34,6 +34,10 @@ fn t14() {
             ],
             answer: String::from(""),
         },
+        TestCase {
+            input: vec![],
+            answer: String::from(""),
+        },
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {
