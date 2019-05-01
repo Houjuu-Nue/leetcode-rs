@@ -12,6 +12,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#15](src/p00xx/p15.rs) | [3Sum](https://leetcode.com/problems/3sum/)                  | Medium     | 32ms, 3.3MB |
 | [#14](src/p00xx/p14.rs) | [Longest Common Prefix](https://leetcode.com/problems/longest-common-prefix/) | Easy       | 0ms, 2MB    |
 | [#13](src/p00xx/p13.rs) | [Roman to Integer](https://leetcode.com/problems/roman-to-integer/) | Easy       | 12ms, 2MB   |
 | [#12](src/p00xx/p12.rs) | [Integer to Roman](https://leetcode.com/problems/integer-to-roman/) | Medium     | 16ms, 2.1MB |
