@@ -53,3 +53,50 @@ impl Solution for Solution0 {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Triplet Pointers(similiar method to #P15).
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn three_sum_closest(&self, mut nums: Vec<i32>, target: i32) -> i32 {
+
+        nums.sort_unstable();
+        let mut min_distance = ::std::i32::MAX;
+        let mut min_sum = ::std::i32::MAX;
+
+        for start in 0..(nums.len() - 2) {
+            
+            if start > 0 && nums[start] == nums[start - 1] {
+                continue
+            }
+
+            let mut middle = start + 1;
+            let mut end = nums.len() - 1;
+
+            while middle < end {
+                let sum = nums[start] + nums[middle] + nums[end];
+                let distance = (sum - target).abs();
+
+                if distance == 0 {
+                    return sum
+                } else {
+                    if distance < min_distance {
+                        min_distance = distance;
+                        min_sum = sum;
+                    }
+
+                    if sum - target > 0 {
+                        end -= 1;
+                    } else {
+                        middle += 1;
+                    }
+                }
+            }
+        }
+        
+        min_sum
+    }
+}
+// -----------------------------------------------------------------------------
