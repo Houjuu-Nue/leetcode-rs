@@ -29,9 +29,9 @@ fn t15() {
             answer: vec![],
         },
         TestCase {
-            input: vec![-2,0,0,2,2],
+            input: vec![-2, 0, 0, 2, 2],
             answer: vec![
-                vec![-2,0,2],
+                vec![-2, 0, 2],
             ],
         },
     ];
