@@ -24,6 +24,13 @@ fn t16() {
             },
             answer: 2,
         },
+        TestCase {
+            input: Input {
+                nums: vec![1, 1, -1, -1, 3],
+                target: -1,
+            },
+            answer: -1,
+        },
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {

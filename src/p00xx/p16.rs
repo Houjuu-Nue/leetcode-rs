@@ -34,7 +34,22 @@ pub struct Solution0;
 impl Solution for Solution0 {
 
     fn three_sum_closest(&self, nums: Vec<i32>, target: i32) -> i32 {
-        2
+        
+        let mut closest = nums[0] + nums[1] + nums[2];
+
+        for i in 0..(nums.len() - 2) {
+            for j in (i + 1)..(nums.len() - 1) {
+                for k in (j + 1)..nums.len() {
+
+                    let sum = nums[i] + nums[j] + nums[k];
+                    if (sum - target).abs() < (closest - target).abs() {
+                        closest = sum;
+                    }
+                }
+            }
+        }
+
+        closest
     }
 }
 // -----------------------------------------------------------------------------
