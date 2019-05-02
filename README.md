@@ -1,4 +1,8 @@
-# leetcode-rs
+<img src="https://leetcode.com/static/webpack_bundles/images/logo-dark.e99485d9b.svg" width="400" align="center" alt="LeetCode"/>
+
+# Leetcode-rs
+
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-16/1036-red.svg?logo=leetcode) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Solutions to LeetCode problems in Rust.
 
