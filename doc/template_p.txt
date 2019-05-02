@@ -1,0 +1,16 @@
+
+pub type Input  = i32;
+pub type Output = i32;
+
+pub trait Solution {
+    fn some_problem(&self, parameter: i32) -> i32;
+}
+
+// -----------------------------------------------------------------------------
+/// Approach 0
+pub struct Solution0;
+impl Solution for Solution0 {
+
+    fn some_problem(&self, parameter: i32) -> i32;
+}
+// -----------------------------------------------------------------------------

@@ -1,4 +1,3 @@
-<img src="https://leetcode.com/static/webpack_bundles/images/logo-dark.e99485d9b.svg" width="400" align="center" alt="LeetCode"/>
 
 # Leetcode-rs
 

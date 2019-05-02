@@ -9,3 +9,8 @@ license     = "MIT"
 description = "Solutions to LeetCode problems in Rust."
 repository  = "https://github.com/Houjuu-Nue/gli-rs"
 keywords    = ["leetcode", "algorithm", "Rust"]
+
+
+[[bin]]
+name = "doc-gen"
+path = "doc/doc.rs"
