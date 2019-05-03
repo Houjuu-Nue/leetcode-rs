@@ -9,7 +9,7 @@
 //!
 //! You may assume that each input would have exactly one solution.
 //!
-//! ## Example:
+//! **Example:**
 //! ```text
 //! Given array nums = [-1, 2, 1, -4], and target = 1.
 //! 

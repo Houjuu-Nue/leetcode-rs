@@ -17,13 +17,13 @@
 //! 
 //! string convert(string s, int numRows);
 //! 
-//! ## Example 1:
+//! **Example 1:**
 //! ```text
 //! Input: s = "PAYPALISHIRING", numRows = 3
 //! Output: "PAHNAPLSIIGYIR"
 //! ```
 //! 
-//! ## Example 2:
+//! **Example 2:**
 //! ```text
 //! Input: s = "PAYPALISHIRING", numRows = 4
 //! Output: "PINALSIGYAHRPI"

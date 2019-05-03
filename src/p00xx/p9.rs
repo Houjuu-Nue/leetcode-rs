@@ -4,22 +4,23 @@
 //! https://leetcode.com/problems/palindrome-number/
 //!
 //! Determine whether an integer is a palindrome.
+//!
 //! An integer is a palindrome when it reads the same backward as forward.
 //! 
-//! ## Example 1:
+//! **Example 1:**
 //! ```text
 //! Input: 121
 //! Output: tru
 //! ```
 //! 
-//! ## Example 2:
+//! **Example 2:**
 //! ```text
 //! Input: -121
 //! Output: false
 //! Explanation: From left to right, it reads -121. From right to left, it becomes 121-. Therefore it is not a palindrome.
 //! ```
 //! 
-//! ## Example 3:
+//! **Example 3:**
 //! ```text
 //! Input: 10
 //! Output: false

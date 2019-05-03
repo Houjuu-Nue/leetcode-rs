@@ -7,7 +7,7 @@
 //!
 //! You may assume that each input would have exactly one solution, and you may not use the same element twice.
 //!
-//! ## Example:
+//! **Example:**
 //! ```text
 //! Given nums = [2, 7, 11, 15], target = 9,
 //!

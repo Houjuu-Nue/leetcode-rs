@@ -1,7 +1,7 @@
 
 # Leetcode-rs
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-16/1036-red.svg?logo=leetcode) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-16/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-#DBA882.svg?logo=Rust&logoColor=white) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Solutions to LeetCode problems in Rust.
 
@@ -31,4 +31,8 @@ cargo test -- t1 # run test case for problem #1
 | [#3](src/p00xx/p3.rs)   | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium     | 4ms, 2.5MB  |
 | [#2](src/p00xx/p2.rs)   | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium     | 8ms, 2.3MB  |
 | [#1](src/p00xx/p1.rs)   | [Two Sum](https://leetcode.com/problems/two-sum/)            | Easy       | 4ms, 3.3MB  |
+
+## A thanks to
+
+- [LeetCodeAnimation](https://github.com/MisterBooo/LeetCodeAnimation)
 

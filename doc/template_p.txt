@@ -11,6 +11,8 @@ pub trait Solution {
 pub struct Solution0;
 impl Solution for Solution0 {
 
-    fn some_problem(&self, parameter: i32) -> i32;
+    fn some_problem(&self, parameter: i32) -> i32 {
+        parameter
+    }
 }
 // -----------------------------------------------------------------------------

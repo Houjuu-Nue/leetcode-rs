@@ -15,7 +15,10 @@ fn main() -> std::io::Result<()> {
 
     // write src/pxxx/pxxx.rs
     let file_path = format!("./src/{}/p{}.rs", doc_module, doc_problem);
-    let mut file_problem = match OpenOptions::new().read(true).write(true).open(file_path.clone()) {
+    let mut file_problem = match OpenOptions::new()
+        .read(true).write(true)
+        .open(file_path.clone()) {
+        
         | Ok(file) => translate_doc(file, file_path.clone())?,
         | Err(_) => File::create(file_path)?,
     };
@@ -23,9 +26,9 @@ fn main() -> std::io::Result<()> {
     file_problem.flush()?;
 
     // write src/pxxx/mod.rs
-    let mut file_p_mod = OpenOptions::new().write(true).append(true).open(&format!("./src/{}/mod.rs", doc_module))?;
-    write!(file_p_mod, "pub mod p{};\n", doc_problem)?;
-    file_p_mod.flush()?;
+    let p_mod_path    = format!("./src/{}/mod.rs", doc_module);
+    let p_mod_content = format!("pub mod p{};\n", doc_problem);
+    write_mod_info(p_mod_path, p_mod_content)?;
 
     // write test/pxxx/txxx.rs
     let file_path = format!("./tests/{}/t{}.rs", doc_module, doc_problem);
@@ -37,9 +40,9 @@ fn main() -> std::io::Result<()> {
     file_test.flush()?;
 
     // write test/pxxx/mod.rs
-    let mut file_t_mod = OpenOptions::new().write(true).append(true).open(&format!("./tests/{}/mod.rs", doc_module))?;
-    write!(file_t_mod, "#[cfg(test)] pub mod t{};\n", doc_problem)?;
-    file_t_mod.flush()?;
+    let t_mod_path    = format!("./tests/{}/mod.rs", doc_module);
+    let t_mod_content = format!("#[cfg(test)] pub mod t{};\n", doc_problem);
+    write_mod_info(t_mod_path, t_mod_content)?;
 
     Ok(())
 }
@@ -113,9 +116,28 @@ fn translate_doc(mut file: File, path: String) -> std::io::Result<File> {
             translation.push_str("**");
             translation.push('\n');
         } else {
-            translation.push_str(LINE_PREFIX_V1);
-            translation.push_str(line);
-            translation.push('\n');
+            if text_flag {
+                translation.push_str(LINE_PREFIX_V1);
+                translation.push_str(line);
+                translation.push('\n');
+            } else {
+                let sentences: Vec<&str> = line.split('.')
+                    .filter(|s| !s.is_empty())
+                    .collect();
+                for sentence in sentences {
+                    if sentence.starts_with(' ') {
+                        translation.push_str(LINE_PREFIX_V2);
+                    } else {
+                        translation.push_str(LINE_PREFIX_V1);
+                    }
+                    
+                    translation.push_str(sentence);
+                    translation.push('.');
+                    translation.push_str("\n");
+                    translation.push_str(LINE_PREFIX_V2);
+                    translation.push_str("\n");
+                }
+            }
         }
     }
 
@@ -125,4 +147,20 @@ fn translate_doc(mut file: File, path: String) -> std::io::Result<File> {
     let mut file = File::create(&path)?;
     file.write_all(&translation.into_bytes())?;
     Ok(file)
+}
+
+fn write_mod_info(file_path: String, content: String) -> std::io::Result<()> {
+
+    let mut file_mod = OpenOptions::new()
+        .write(true).read(true).append(true)
+        .open(&file_path)?;
+    let mut file_content = String::new();
+    file_mod.read_to_string(&mut file_content)?;
+
+    if file_content.contains(&content) == false {
+        write!(file_mod, "{}", content)?;
+        file_mod.flush()?;
+    }
+
+    Ok(())
 }
