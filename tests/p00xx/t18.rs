@@ -16,15 +16,34 @@ fn t18() {
     ];
     
     let test_cases = [
+       TestCase {
+            input: Input {
+                nums: vec![-1, 0, 1, 2, -1, -4],
+                target: -1,
+            },
+            answer: vec![
+                vec![-4, 0, 1, 2],
+                vec![-1, -1, 0, 1],
+            ],
+        },
         TestCase {
             input: Input {
                 nums: vec![1, 0, -1, 0, -2, 2],
                 target: 0,
             },
             answer: vec![
-                vec![-1,  0, 0, 1],
                 vec![-2, -1, 1, 2],
                 vec![-2,  0, 0, 2],
+                vec![-1,  0, 0, 1],
+            ],
+        },
+        TestCase {
+            input: Input {
+                nums: vec![-3, -1, 0, 2, 4, 5],
+                target: 2,
+            },
+            answer: vec![
+                vec![-3, -1, 2, 4],
             ],
         },
     ];
