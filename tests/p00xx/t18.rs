@@ -1,5 +1,5 @@
 
-use leetcode_rs::p00xx::pxxx::*;
+use leetcode_rs::p00xx::p18::*;
 
 #[derive(Debug, Clone)]
 struct TestCase {
@@ -8,7 +8,7 @@ struct TestCase {
 }
 
 #[test]
-fn txxx() {
+fn t18() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
@@ -17,8 +17,15 @@ fn txxx() {
     
     let test_cases = [
         TestCase {
-            input: Input,
-            answer: Output,
+            input: Input {
+                nums: vec![1, 0, -1, 0, -2, 2],
+                target: 0,
+            },
+            answer: vec![
+                vec![-1,  0, 0, 1],
+                vec![-2, -1, 1, 2],
+                vec![-2,  0, 0, 2],
+            ],
         },
     ];
 
@@ -26,12 +33,12 @@ fn txxx() {
 
         for (j, test_case) in test_cases.iter().cloned().enumerate() {
 
-            let test_answer = solution.some_problem(test_case.input);
+            let test_answer = solution.four_sum(test_case.input.nums, test_case.input.target);
 
             assert_eq!(test_answer, test_case.answer,
                 "Test failed on Solution {} TestCase {}.\n\
-                Correct  answer is {}\n\
-                TestCase answer is {}\n",
+                Correct  answer is {:?}\n\
+                TestCase answer is {:?}\n",
                 i, j, &test_case.answer, &test_answer);
         }
     }
