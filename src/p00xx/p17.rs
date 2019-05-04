@@ -9,7 +9,7 @@
 //!
 //! Note that 1 does not map to any letters.
 //!
-//! ![](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png)
+//! ![Telephone-keypad2](https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Telephone-keypad2.svg/200px-Telephone-keypad2.svg.png)
 //!
 //! **Example:**
 //! ```text
@@ -75,3 +75,42 @@ fn generate_maps() -> HashMap<char, Vec<char>> {
     maps
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: DFS
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn letter_combinations(&self, digits: String) -> Vec<String> {
+        
+        if digits.is_empty() { return Vec::new() }
+        let maps = generate_maps();
+        let digits: Vec<char> = digits.chars().collect();
+        
+        let mut s = vec![0; digits.len()];
+        let mut result = Vec::new();
+
+        dfs(&maps, &mut s, &digits, 0, digits.len(), &mut result);
+        
+        result
+    }
+}
+
+fn dfs(maps: &HashMap<char, Vec<char>>, s: &mut Vec<u8>, digits: &Vec<char>, depth: usize, max_depth: usize, result: &mut Vec<String>) {
+
+    if depth == max_depth {
+        let answer = unsafe {
+            String::from_utf8_unchecked(s.clone())
+        };
+        result.push(answer);
+    } else {
+        let candidates = &maps[&digits[depth]];
+        for digit in candidates.iter().cloned() {
+            s[depth] = digit as u8;
+            dfs(maps, s, digits, depth + 1, max_depth, result);
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
