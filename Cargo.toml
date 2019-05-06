@@ -13,4 +13,5 @@ keywords    = ["leetcode", "algorithm", "Rust"]
 
 [[bin]]
 name = "doc-gen"
-path = "doc/doc.rs"
+path = "template/doc.rs"
+
