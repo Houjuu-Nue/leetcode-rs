@@ -10,8 +10,10 @@
 //! Given linked list: 1->2->3->4->5, and n = 2.
 //!
 //! After removing the second node from the end, the linked list becomes 1->2->3->5.
+//! ```
 //!
-//! **Note:**.
+//! **Note:**
+//!
 //! Given n will always be valid.
 //!
 
@@ -44,12 +46,43 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: Two pass algorithm 
 pub struct Solution0;
 impl Solution for Solution0 {
 
-    fn remove_nth_from_end(&self, head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
-        head
+    fn remove_nth_from_end(&self, mut head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+        
+        let list_length = {
+            let mut length = 0;
+            let mut pointer = &head;
+            while let Some(ref node) = pointer {
+                length += 1;
+                pointer = &node.next;
+            }
+
+            length
+        };
+
+        let delete_index = list_length - n as usize;
+
+        let mut node_ref = &mut head;
+
+        if delete_index > 0 {
+            for _ in 0..(delete_index - 1) {
+                node_ref = &mut node_ref.as_mut().unwrap().next;
+            }
+             
+            let mut node_delete = node_ref.as_mut().unwrap().next.take();
+            node_ref.as_mut().unwrap().next = if let Some(ref mut node) = node_delete {
+                node.next.take()
+            } else {
+                None
+            };
+
+            head
+        } else {
+            head.unwrap().next
+        }
     }
 }
 // -----------------------------------------------------------------------------

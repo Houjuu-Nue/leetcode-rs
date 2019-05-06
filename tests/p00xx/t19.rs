@@ -23,6 +23,20 @@ fn t19() {
             },
             answer: ListNode::from_list(&[1, 2, 3, 5]),
         },
+        TestCase {
+            input: Input {
+                head: ListNode::from_list(&[1]),
+                n: 1,
+            },
+            answer: ListNode::from_list(&[]),
+        },
+        TestCase {
+            input: Input {
+                head: ListNode::from_list(&[1, 2]),
+                n: 2,
+            },
+            answer: ListNode::from_list(&[2]),
+        },
     ];
 
     for (i, solution) in solutions.into_iter().enumerate() {
