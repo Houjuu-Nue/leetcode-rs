@@ -17,6 +17,7 @@
 //! Given n will always be valid.
 //!
 
+
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -86,6 +87,42 @@ impl Solution for Solution0 {
     }
 }
 // -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: One pass algorithm. 
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn remove_nth_from_end(&self, head: Option<Box<ListNode>>, n: i32) -> Option<Box<ListNode>> {
+
+        let mut p1 = &head;
+        let mut p2 = &head;
+
+        for _ in 0..=n {
+            if let Some(ref p) = p1 {
+                p1 = &p.next;
+            } else {
+                return head.unwrap().next
+            }
+        }
+
+        while let Some(ref node) = p1 {
+            p1 = &node.next;
+            p2 = &p2.as_ref().unwrap().next;
+        }
+
+        let p_mut = p2 as *const Option<Box<ListNode>> as *mut Option<Box<ListNode>>;
+        let p_mut = unsafe { &mut *p_mut };
+
+        let node_delete = p_mut.as_mut().unwrap().next.take();
+        p_mut.as_mut().unwrap().next = node_delete.unwrap().next.take();
+
+        head
+    }
+}
+// -----------------------------------------------------------------------------
+
 
 impl ListNode {
 
