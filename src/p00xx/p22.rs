@@ -41,7 +41,7 @@ impl Solution for Solution0 {
 fn gen_parenthesis(pattern: String, i: usize, n: usize, result: &mut Vec<String>) {
     
     if pattern.len() == 2 * n {
-        result.push(pattern.clone());
+        result.push(pattern);
         return
     } else if i == n {
         gen_parenthesis(pattern + ")", i, n, result);
@@ -52,6 +52,56 @@ fn gen_parenthesis(pattern: String, i: usize, n: usize, result: &mut Vec<String>
             gen_parenthesis(pattern + ")", i, n, result);
         }
     }
+}
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Brute Force.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn generate_parenthesis(&self, n: i32) -> Vec<String> {
+
+        let mut result = Vec::new();
+        let mut pattern = String::new();
+        gen_parenthesis_v1(&mut pattern, n as usize, &mut result);
+        result
+    }
+}
+
+fn gen_parenthesis_v1(pattern: &mut String, n: usize, result: &mut Vec<String>) {
+
+    if pattern.len() == 2 * n {
+        if is_valid(pattern) {
+            result.push(pattern.clone());
+        }
+    } else {
+        pattern.push('(');
+        gen_parenthesis_v1(pattern, n, result);
+        pattern.pop();
+
+        pattern.push(')');
+        gen_parenthesis_v1(pattern, n, result);
+        pattern.pop();
+    }
+}
+
+fn is_valid(s: &String) -> bool {
+
+    let mut balance = 0;
+    for ch in s.chars() {
+        match ch {
+            | '(' => balance += 1,
+            | ')' => balance -= 1,
+            | _   => unreachable!(),
+        }
+
+        if balance < 0 {
+            return false
+        }
+    }
+
+    balance == 0
 }
 // -----------------------------------------------------------------------------
 
