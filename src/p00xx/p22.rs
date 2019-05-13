@@ -105,3 +105,33 @@ fn is_valid(s: &String) -> bool {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 2: Closure Number.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn generate_parenthesis(&self, n: i32) -> Vec<String> {
+
+        gen_parenthesis_v2(n as usize)
+    }
+}
+
+fn gen_parenthesis_v2(n: usize) -> Vec<String> {
+
+    if n == 0 {
+        vec![String::new()]
+    } else {
+        let mut ans = Vec::new();
+        for i in 0..n {
+           for left in gen_parenthesis_v2(i) {
+               for right in gen_parenthesis_v2(n - 1 - i) {
+                   ans.push(format!("({}){}", &left, &right));
+               }
+           }
+        }
+
+        ans
+    }
+}
+// -----------------------------------------------------------------------------
+

@@ -13,6 +13,7 @@ fn t22() {
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution2) as Box<dyn Solution>,
     ];
     
     let test_cases = [
@@ -34,12 +35,17 @@ fn t22() {
 
             let test_answer = solution.generate_parenthesis(test_case.input);
 
-            assert_eq!(test_answer, test_case.answer,
+            assert!(compare(&test_answer, &test_case.answer),
                 "Test failed on Solution {} TestCase {}.\n\
                 Correct  answer is {:?}\n\
                 TestCase answer is {:?}\n",
                 i, j, &test_case.answer, &test_answer);
         }
     }
+}
+
+fn compare(v1: &Vec<String>, v2: &Vec<String>) -> bool {
+    v1.iter()
+        .all(|s1| v2.iter().find(|s2| s2 == &s1).is_some())
 }
 
