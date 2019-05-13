@@ -4,14 +4,16 @@ use std::fs;
 use std::fs::{File, OpenOptions};
 use std::io::prelude::*;
 
-// Command: cargo r --bin doc-gen p00xx 17
+
+// Command: cargo r --bin doc-gen p00xx 17 generic
 
 fn main() -> std::io::Result<()> {
 
     let args: Vec<String> = env::args().collect();
 
-    let doc_module = args[1].clone();
+    let doc_module  = args[1].clone();
     let doc_problem = args[2].clone();
+    let doc_type    = args[3].clone();
 
     // write src/pxxx/pxxx.rs
     let file_path = format!("./src/{}/p{}.rs", doc_module, doc_problem);
@@ -22,7 +24,11 @@ fn main() -> std::io::Result<()> {
         | Ok(file) => translate_doc(file, file_path.clone())?,
         | Err(_) => File::create(file_path)?,
     };
-    file_problem.write_all(&include_str!("./template_p.txt").to_string().into_bytes())?;
+    match doc_type.as_ref() {
+        | "generic"  => file_problem.write_all(&include_str!("./template_p_generic.txt" ).to_string().into_bytes())?,
+        | "linklist" => file_problem.write_all(&include_str!("./template_p_linklist.txt").to_string().into_bytes())?,
+        | _ => panic!("unknown problem type"),
+    }
     file_problem.flush()?;
 
     // write src/pxxx/mod.rs
@@ -33,7 +39,11 @@ fn main() -> std::io::Result<()> {
     // write test/pxxx/txxx.rs
     let file_path = format!("./tests/{}/t{}.rs", doc_module, doc_problem);
     let mut file_test = File::create(&file_path)?;
-    let mut test_content = include_str!("./template_t.txt").to_string();
+    let mut test_content = match doc_type.as_ref() {
+        | "generic"  => include_str!("./template_t_generic.txt" ).to_string(),
+        | "linklist" => include_str!("./template_t_linklist.txt").to_string(),
+        | _ => panic!("unknown problem type"),
+    };
     test_content = test_content.replace("pxxx", &format!("p{}", doc_problem));
     test_content = test_content.replace("txxx", &format!("t{}", doc_problem));
     file_test.write_all(&test_content.into_bytes())?;

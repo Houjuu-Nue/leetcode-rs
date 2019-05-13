@@ -45,7 +45,13 @@ fn t22() {
 }
 
 fn compare(v1: &Vec<String>, v2: &Vec<String>) -> bool {
-    v1.iter()
-        .all(|s1| v2.iter().find(|s2| s2 == &s1).is_some())
+
+    use std::collections::HashSet;
+    let set1: HashSet<String> = v1.iter().cloned().collect();
+    let set2: HashSet<String> = v2.iter().cloned().collect();
+    set1 == set2
+
+    // v1.iter()
+    //    .all(|s1| v2.iter().find(|s2| s2 == &s1).is_some())
 }
 

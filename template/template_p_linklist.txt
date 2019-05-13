@@ -1,0 +1,63 @@
+
+// Definition for singly-linked list.
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
+}
+
+impl ListNode {
+
+    #[inline]
+    pub fn new(val: i32) -> Self {
+        ListNode { next: None, val }
+    }
+}
+
+
+pub type Input  = i32;
+pub type Output = i32;
+
+pub trait Solution {
+    fn some_problem(&self, parameter: i32) -> i32;
+}
+
+// -----------------------------------------------------------------------------
+/// Approach 0
+pub struct Solution0;
+impl Solution for Solution0 {
+
+    fn some_problem(&self, parameter: i32) -> i32 {
+        parameter
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+impl ListNode {
+
+    pub fn from_list(v: &[i32]) -> Option<Box<ListNode>> {
+
+        let mut root = None;
+        let mut node_ref = &mut root;
+        for &digit in v {
+            (*node_ref) = Some(Box::new(ListNode::new(digit)));
+            node_ref = &mut node_ref.as_mut().unwrap().next;
+        }
+        root
+    }
+}
+
+pub fn list_node_to_vec(list: &Option<Box<ListNode>>) -> Vec<i32> {
+
+    let mut result = vec![];
+
+    let mut node_ref = list;
+    while let Some(ref node) = node_ref {
+        result.push(node.val);
+        node_ref = &node.next;
+    }
+
+    result
+}
+
