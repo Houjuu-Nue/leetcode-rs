@@ -114,6 +114,43 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 2: Compare One by One.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn merge_k_lists(&self, lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+
+        let mut values = Vec::new();
+
+        let mut lists: Vec<Box<ListNode>> = lists.into_iter()
+            .filter_map(|l| l)
+            .collect();
+
+        while lists.is_empty() == false {
+
+            let mut selected = 0;
+            for i in 1..lists.len() {
+                if lists[i].val < lists[selected].val {
+                    selected = i;
+                }
+            }
+
+            let selected_list = &lists[selected];
+            values.push(selected_list.val);
+
+            if selected_list.next.is_some() {
+                lists[selected] = lists[selected].next.take().unwrap();
+            } else {
+                lists.swap_remove(selected);
+            }
+        }
+
+        ListNode::from_list(&values)
+    }
+}
+// -----------------------------------------------------------------------------
+
 
 impl ListNode {
 
