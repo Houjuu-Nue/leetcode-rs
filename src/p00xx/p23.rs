@@ -91,6 +91,29 @@ fn merge_two_lists(mut l1: Option<Box<ListNode>>, mut l2: Option<Box<ListNode>>)
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 1: Brute Force. 
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn merge_k_lists(&self, lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+
+        let mut values: Vec<i32> = lists.into_iter().flat_map(|mut list| {
+            let mut values = Vec::new();
+            while let Some(v) = list {
+                values.push(v.val);
+                list = v.next;
+            }
+            values
+        }).collect();
+
+        values.sort_unstable();
+
+        ListNode::from_list(&values)
+    }
+}
+// -----------------------------------------------------------------------------
+
 
 impl ListNode {
 
