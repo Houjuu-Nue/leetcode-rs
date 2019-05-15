@@ -151,6 +151,53 @@ impl Solution for Solution2 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 3: Optimize Compare One by One by Priority Queue.
+pub struct Solution3;
+impl Solution for Solution3 {
+
+    fn merge_k_lists(&self, lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+        
+        use std::collections::BinaryHeap;
+
+        let mut values = Vec::new();
+
+        let mut lists: BinaryHeap<LiNode> = lists.into_iter()
+            .filter_map(|l| l.map(|l| LiNode(l)))
+            .collect();
+
+        while let Some(selected) = lists.pop() {
+
+            values.push(selected.0.val);
+            
+            if let Some(next_node) = selected.0.next {
+                lists.push(LiNode(next_node));
+            }
+        }
+
+        ListNode::from_list(&values)
+    }
+}
+
+#[derive(Eq, PartialEq)]
+struct LiNode(Box<ListNode>);
+
+use std::cmp::Ordering;
+impl PartialOrd for LiNode {
+	
+	fn partial_cmp(&self, other: &LiNode) -> Option<Ordering> {
+        Some(self.0.val.cmp(&other.0.val).reverse())
+	}
+}
+
+impl Ord for LiNode {
+    
+    fn cmp(&self, other: &LiNode) -> Ordering {
+        self.partial_cmp(other).unwrap()
+    }
+}
+// -----------------------------------------------------------------------------
+
 
 impl ListNode {
 
