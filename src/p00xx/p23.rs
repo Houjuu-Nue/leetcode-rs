@@ -199,6 +199,33 @@ impl Ord for LiNode {
 // -----------------------------------------------------------------------------
 
 
+// -----------------------------------------------------------------------------
+/// Approach 4: Merge with Divide And Conquer.
+pub struct Solution4;
+impl Solution for Solution4 {
+
+    fn merge_k_lists(&self, mut lists: Vec<Option<Box<ListNode>>>) -> Option<Box<ListNode>> {
+
+        while lists.len() > 1 {
+
+            let mut new_lists = Vec::new();
+
+            while let Some(list1) = lists.pop() {
+                if let Some(list2) = lists.pop() {
+                    new_lists.push(merge_two_lists(list1, list2));
+                } else {
+                    new_lists.push(list1);
+                }
+            }
+
+            lists = new_lists;
+        }
+
+        lists.pop().unwrap_or(None)
+    }
+}
+// -----------------------------------------------------------------------------
+
 impl ListNode {
 
     pub fn from_list(v: &[i32]) -> Option<Box<ListNode>> {
