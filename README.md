@@ -1,7 +1,7 @@
 
 # Leetcode-rs
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-23/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-24/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Solutions to LeetCode problems in Rust.
 
@@ -15,6 +15,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#24](src/p00xx/p24.rs) | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) | Medium     | 0ms, 2MB    |
 | [#23](src/p00xx/p23.rs) | [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) | Hard       | 4ms, 3.1MB  |
 | [#22](src/p00xx/p22.rs) | [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/solution/) | Medium     | 0ms, 2MB    |
 | [#21](src/p00xx/p21.rs) | [Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/) | Easy       | 0ms, 2MB    |
