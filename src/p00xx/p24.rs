@@ -77,6 +77,32 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 1: Recursive Algorithm.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn swap_pairs(&self, head: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+        swap(head)
+    }
+}
+
+fn swap(mut node: Option<Box<ListNode>>) -> Option<Box<ListNode>> {
+
+    if let Some(mut first) = node.take() {
+        if let Some(mut second) = first.next.take() {
+
+            first.next  = swap(second.next.take());
+            second.next = Some(first);
+            node        = Some(second);
+        } else {
+            node = Some(first);
+        }
+    }
+
+    node
+}
+// -----------------------------------------------------------------------------
 
 impl ListNode {
 
