@@ -83,3 +83,16 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 1: Build-in dedup_by medthod. 
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn remove_duplicates(&self, nums: &mut Vec<i32>) -> i32 {
+
+        nums.dedup_by(|first, second| first == second);
+        nums.len() as i32
+    }
+}
+// -----------------------------------------------------------------------------
+
