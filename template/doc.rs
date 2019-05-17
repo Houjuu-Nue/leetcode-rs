@@ -142,7 +142,7 @@ fn translate_doc(mut file: File, path: String) -> std::io::Result<File> {
                     }
                     
                     translation.push_str(sentence);
-                    if sentence.ends_with(':') == false {
+                    if sentence.ends_with(':') == false && sentence.ends_with('?') == false {
                         translation.push('.');
                     }
                     translation.push_str("\n");
