@@ -15,6 +15,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#25](src/p00xx/p25.rs) | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | Hard       | 4ms, 2.4MB  |
 | [#24](src/p00xx/p24.rs) | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) | Medium     | 0ms, 2MB    |
 | [#23](src/p00xx/p23.rs) | [Merge k Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/) | Hard       | 4ms, 3.1MB  |
 | [#22](src/p00xx/p22.rs) | [Generate Parentheses](https://leetcode.com/problems/generate-parentheses/solution/) | Medium     | 0ms, 2MB    |
