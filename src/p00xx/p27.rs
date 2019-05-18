@@ -83,3 +83,25 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Swap Remove.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn remove_element(&self, nums: &mut Vec<i32>, val: i32) -> i32 {
+        
+        let mut i = 0;
+        while i < nums.len() {
+            if nums[i] == val {
+                nums.swap_remove(i);
+            } else {
+                i += 1;
+            }
+        }
+
+        nums.len() as i32
+    }
+}
+// -----------------------------------------------------------------------------
+

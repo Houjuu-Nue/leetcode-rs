@@ -13,7 +13,7 @@ fn t27() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        // Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution1) as Box<dyn Solution>,
     ];
     
     let test_cases = [
@@ -46,12 +46,21 @@ fn t27() {
                 Correct  return answer is {}, {:?}\n\
                 TestCase return answer is {}, {:?}\n",
                 i, j, &test_case.answer, &test_case.nums_modified, &test_answer, &test_case.input);
-            assert_eq!(test_case.input.nums, test_case.nums_modified,
+            assert!(compare(&test_case.input.nums, &test_case.nums_modified),
                 "Test failed on Solution {} TestCase {}.\n\
                 Correct  modified input is {:?}\n\
                 TestCase modified input is {:?}\n",
                 i, j, &test_case.nums_modified, &test_case.input.nums);
         }
     }
+}
+
+fn compare(v1: &Vec<i32>, v2: &Vec<i32>) -> bool {
+
+    if v1.len() != v2.len() {
+        return false
+    }
+
+    v1.iter().all(|val| v2.contains(val))
 }
 
