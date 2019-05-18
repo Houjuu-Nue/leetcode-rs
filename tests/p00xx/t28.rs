@@ -12,7 +12,7 @@ fn t28() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        // Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution1) as Box<dyn Solution>,
     ];
     
     let test_cases = [
@@ -27,6 +27,13 @@ fn t28() {
             input: Input {
                 haystack: String::from("aaaaa"),
                 needle  : String::from("bba"),
+            },
+            answer: -1,
+        },
+        TestCase {
+            input: Input {
+                haystack: String::from("aaa"),
+                needle  : String::from("aaaa"),
             },
             answer: -1,
         },

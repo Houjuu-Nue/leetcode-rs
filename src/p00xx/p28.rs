@@ -57,3 +57,44 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Brute Force.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+	fn str_str(&self, haystack: String, needle: String) -> i32 {
+
+        let haystack: Vec<char> = haystack.chars().collect();
+        let needle  : Vec<char> = needle.chars().collect();
+
+        if needle.is_empty() {
+            return 0
+        }
+
+        for i in 0..haystack.len() {
+            if haystack[i] == needle[0] {
+
+                if i + needle.len() > haystack.len() {
+                    return -1
+                }
+
+                let mut flag = true;
+                for j in 0..needle.len() {
+                    if haystack[i + j] != needle[j] {
+                        flag = false;
+                        break
+                    }
+                }
+
+                if flag {
+                    return i as i32
+                }
+            }
+        }
+        
+        -1
+	}
+}
+// -----------------------------------------------------------------------------
+
