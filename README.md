@@ -1,7 +1,7 @@
 
 # Leetcode-rs
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-26/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-27/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 Solutions to LeetCode problems in Rust.
 
@@ -15,6 +15,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#27](src/p00xx/p27.rs) | [Remove Element](https://leetcode.com/problems/remove-element/) | Easy       | 0ms, 1.9MB  |
 | [#26](src/p00xx/p26.rs) | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy       | 0ms, 2.2MB  |
 | [#25](src/p00xx/p25.rs) | [Reverse Nodes in k-Group](https://leetcode.com/problems/reverse-nodes-in-k-group/) | Hard       | 4ms, 2.4MB  |
 | [#24](src/p00xx/p24.rs) | [Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/) | Medium     | 0ms, 2MB    |
