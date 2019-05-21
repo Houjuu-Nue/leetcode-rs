@@ -119,7 +119,7 @@ fn translate_doc(mut file: File, path: String) -> std::io::Result<File> {
             lines.next();
 
             text_flag = true;
-        } else if line.starts_with("Note") {
+        } else if line.starts_with("Note") || line.starts_with("Clarification") {
             translation.push_str(LINE_PREFIX_V1);
             translation.push_str("**");
             translation.push_str(line);

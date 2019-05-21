@@ -184,10 +184,10 @@ struct LiNode(Box<ListNode>);
 
 use std::cmp::Ordering;
 impl PartialOrd for LiNode {
-	
-	fn partial_cmp(&self, other: &LiNode) -> Option<Ordering> {
+
+    fn partial_cmp(&self, other: &LiNode) -> Option<Ordering> {
         Some(self.0.val.cmp(&other.0.val).reverse())
-	}
+    }
 }
 
 impl Ord for LiNode {

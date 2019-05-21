@@ -40,7 +40,7 @@ pub struct Input {
 pub type Output = i32;
 
 pub trait Solution {
-	fn str_str(&self, haystack: String, needle: String) -> i32;
+    fn str_str(&self, haystack: String, needle: String) -> i32;
 }
 
 // -----------------------------------------------------------------------------
@@ -48,12 +48,12 @@ pub trait Solution {
 pub struct Solution0;
 impl Solution for Solution0 {
 
-	fn str_str(&self, haystack: String, needle: String) -> i32 {
+    fn str_str(&self, haystack: String, needle: String) -> i32 {
 
         haystack.find(&needle)
             .map(|first| first as i32)
             .unwrap_or(-1)
-	}
+    }
 }
 // -----------------------------------------------------------------------------
 
@@ -63,7 +63,7 @@ impl Solution for Solution0 {
 pub struct Solution1;
 impl Solution for Solution1 {
 
-	fn str_str(&self, haystack: String, needle: String) -> i32 {
+    fn str_str(&self, haystack: String, needle: String) -> i32 {
 
         let haystack: Vec<char> = haystack.chars().collect();
         let needle  : Vec<char> = needle.chars().collect();
@@ -94,7 +94,71 @@ impl Solution for Solution1 {
         }
         
         -1
-	}
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 2: KMP alogrithm.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn str_str(&self, haystack: String, needle: String) -> i32 {
+
+        if needle == 0 { return 0 }
+        kmp(needle, haystack)
+    }
+}
+
+fn kmp(pattern: String, test: String) -> i32 {
+
+    let pattern : Vec<char> = pattern.chars().collect();
+    let test    : Vec<char> = test.chars().collect();
+
+    let nexts = gen_next(&pattern);
+
+    let mut i: usize = 0;
+    let mut j: i32 = 0;
+    
+    while i < test.len() {
+
+        if j == -1 || test[i] == pattern[j as usize] {
+            i += 1;
+            j += 1;
+            
+            if (j as usize) == pattern.len() {
+                return i as i32 - j
+            }
+        } else {
+            j = nexts[j as usize];
+        }
+    }
+
+    -1
+}
+
+fn gen_next(pattern: &Vec<char>) -> Vec<i32> {
+    
+    let mut nexts = vec![-1; pattern.len() + 1];
+    nexts[0] = -1;
+
+    let mut i: usize = 0;
+    let mut j: i32 = -1;
+
+    while i < pattern.len() {
+
+        if j == -1 || pattern[i] == pattern[j as usize] {
+            i += 1;
+            j += 1;
+
+            nexts[i] = j;
+        } else {
+            j = nexts[j as usize];
+        }
+    }
+
+    nexts
 }
 // -----------------------------------------------------------------------------
 
