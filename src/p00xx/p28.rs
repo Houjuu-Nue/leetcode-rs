@@ -106,7 +106,7 @@ impl Solution for Solution2 {
 
     fn str_str(&self, haystack: String, needle: String) -> i32 {
 
-        if needle == 0 { return 0 }
+        if needle.len() == 0 { return 0 }
         kmp(needle, haystack)
     }
 }

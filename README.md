@@ -1,7 +1,10 @@
+<img src="./logo.svg" width="125" height="125" align="right"/>
 
 # Leetcode-rs
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-28/1036-red.svg?logo=leetcode) ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882) ![MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-28/1036-red.svg?logo=leetcode)
+![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Solutions to LeetCode problems in Rust.
 
