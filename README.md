@@ -1,8 +1,6 @@
-<img src="./logo.svg" width="125" height="125" align="right"/>
+# Leetcode-rs <img src="./logo.svg" width="125" height="50" align="right"/>
 
-# Leetcode-rs
-
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-28/1036-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-29/1036-red.svg?logo=leetcode)
 ![Rustlang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -18,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#29](src/p00xx/p29.rs) | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers/) | Medium     | 0ms, 1.9MB  |
 | [#28](src/p00xx/p28.rs) | [Implement strStr()](https://leetcode.com/problems/implement-strstr/) | Easy       | 0ms, 2.3MB  |
 | [#27](src/p00xx/p27.rs) | [Remove Element](https://leetcode.com/problems/remove-element/) | Easy       | 0ms, 1.9MB  |
 | [#26](src/p00xx/p26.rs) | [Remove Duplicates from Sorted Array](https://leetcode.com/problems/remove-duplicates-from-sorted-array/) | Easy       | 0ms, 2.2MB  |
