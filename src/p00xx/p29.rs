@@ -53,6 +53,7 @@ impl Solution for Solution0 {
     fn divide(&self, dividend: i32, divisor: i32) -> i32 {
 
         match (dividend, divisor) {
+            | (_, 1) => dividend,
             | (std::i32::MIN, -1) => std::i32::MAX,
             | (std::i32::MIN, std::i32::MIN) => 1,
             | (std::i32::MIN, _) => {
@@ -61,15 +62,63 @@ impl Solution for Solution0 {
             },
             | (_, _) => {
 
-                let sign = if (dividend.is_positive() && divisor.is_positive()) || (dividend.is_negative() && divisor.is_negative()) 
-                    { 1 } else { -1 };
-                let mut answer = dividend.abs() / divisor.abs();
-                answer *= sign;
+                let sign = (dividend ^ divisor).signum();
+                let answer = dividend.abs() / divisor.abs();
 
-                answer
+                answer * sign
             },
         }
 
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Bit manipulations.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn divide(&self, mut dividend: i32, divisor: i32) -> i32 {
+
+        let mut answer = 0;
+        
+        // handle special case
+        match (dividend, divisor) {
+            | (std::i32::MIN, std::i32::MIN) => return 1,
+            | (_, std::i32::MIN) => return 0,
+            | (std::i32::MIN, -1) => return std::i32::MAX,
+            | (std::i32::MIN, _) => {
+                dividend += divisor.abs();
+                answer += 1;
+            },
+            | _ => {},
+        }
+
+        // get sign of the result
+        let sign = (dividend ^ divisor).signum();
+
+        let mut dividend = dividend.abs() as i64;
+        let divisor = divisor.abs() as i64;
+
+        while dividend >= divisor {
+
+            let mut i = 1;
+            let mut tmp = divisor;
+            while dividend >= tmp {
+                dividend -= tmp;
+                answer += i;
+                i   <<= 1;
+                tmp <<= 1;
+            }
+        }
+
+        // handle the sign
+        if sign == -1 {
+            (!answer) + 1 // equaliant to `answer * -1`
+        } else {
+            answer
+        }
     }
 }
 // -----------------------------------------------------------------------------
