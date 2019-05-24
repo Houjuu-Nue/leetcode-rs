@@ -40,6 +40,8 @@ pub trait Solution {
 
 // -----------------------------------------------------------------------------
 /// Approach 0: Recursive search.
+use std::collections::HashMap;
+
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -47,44 +49,59 @@ impl Solution for Solution0 {
 
         if words.is_empty() { return Vec::new() }
         let mut result = Vec::new();
-        let mut candidates = vec![false; words.len()];
+        let mut candidates = HashMap::new();
 
-        let total_length = words.iter().map(|w| w.len()).sum();
+        let word_length = words[0].len();
+        let words_count = words.len();
+        let total_length = word_length * words_count;
         
+        for word in words.iter() {
+            let word_count = candidates.entry(word.as_str()).or_insert(0);
+            (*word_count) += 1;
+        }
+
         for i in 0..s.len() {
             if s.len() - i < total_length { break }
-            find(&s[i..], &words, &mut candidates, i, 0, &mut result);
+            find(&s[i..], &mut candidates, words_count, word_length, i, 0, &mut result);
         }
 
         result
     }
 }
 
-fn find(substr: &str, words: &Vec<String>, candidates: &mut Vec<bool>, start: usize, used_count: usize, result: &mut Vec<i32>) -> bool {
+fn find(
+    substr: &str, candidates: &mut HashMap<&str, usize>, 
+    words_count: usize, word_length: usize, start: usize, used_count: usize, 
+    result: &mut Vec<i32>) -> bool {
 
-    if used_count == words.len() {
-        result.push(start as i32);
-        return true
-    }
+    if substr.len() < word_length { return false }
 
-    for i in 0..candidates.len() {
+    let test_substr: &str = &substr[..word_length];
+    
+    if let Some(word_count) = candidates.get_mut(test_substr) {
+        if (*word_count) > 0 {
 
-        // if words[i] is used, find next word.
-        if candidates[i] == true { continue }
-        
-        let test_word = &words[i];
+            if used_count + 1 == words_count {
+                result.push(start as i32);
+                return true
+            }
 
-        if substr.starts_with(test_word) {
+            (*word_count) -= 1;
+            let is_found = find(&substr[word_length..], candidates, words_count, word_length, start, used_count + 1, result);
+            
+            // avoid borrow checker complain.
+            //(*word_count) += 1;
+            if let Some(word_count) = candidates.get_mut(test_substr) {
+                (*word_count) += 1;
+            }
 
-            candidates[i] = true;
-            let is_found = find(&substr[test_word.len()..], words, candidates, start, used_count + 1, result);
-            candidates[i] = false;
-
-            if is_found { return true }
+            is_found
+        } else {
+            return false
         }
+    } else {
+        false
     }
-
-    false
 }
 // -----------------------------------------------------------------------------
 
