@@ -1,6 +1,6 @@
 # Leetcode-rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-30/1036-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-31/1036-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#31](src/p00xx/p31.rs) | [Next Permutation](https://leetcode.com/problems/next-permutation/) | Medium     | 0ms, 2MB    |
 | [#30](src/p00xx/p30.rs) | [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/) | Hard       | 64ms, 2.3MB |
 | [#29](src/p00xx/p29.rs) | [Divide Two Integers](https://leetcode.com/problems/divide-two-integers/) | Medium     | 0ms, 1.9MB  |
 | [#28](src/p00xx/p28.rs) | [Implement strStr()](https://leetcode.com/problems/implement-strstr/) | Easy       | 0ms, 2.3MB  |

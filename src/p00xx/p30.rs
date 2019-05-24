@@ -86,12 +86,14 @@ fn find(
                 return true
             }
 
+            // reduce the using count of this word.
             (*word_count) -= 1;
             let is_found = find(&substr[word_length..], candidates, words_count, word_length, start, used_count + 1, result);
             
             // avoid borrow checker complain.
             //(*word_count) += 1;
             if let Some(word_count) = candidates.get_mut(test_substr) {
+                // restore the using count of this word.
                 (*word_count) += 1;
             }
 
