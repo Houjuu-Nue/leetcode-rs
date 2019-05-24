@@ -105,16 +105,38 @@ pub struct Solution2;
 impl Solution for Solution2 {
 
     fn str_str(&self, haystack: String, needle: String) -> i32 {
-
-        if needle.len() == 0 { return 0 }
-        kmp(needle, haystack)
+        kmp(&needle, &haystack)
     }
 }
 
-fn kmp(pattern: String, test: String) -> i32 {
+fn kmp(pattern: &str, test: &str) -> i32 {
 
-    let pattern : Vec<char> = pattern.chars().collect();
-    let test    : Vec<char> = test.chars().collect();
+    let gen_next = |pattern: &[u8]| -> Vec<i32> {
+     
+        let mut nexts = vec![-1; pattern.len() + 1];
+        nexts[0] = -1;
+
+        let mut i: usize = 0;
+        let mut j: i32 = -1;
+
+        while i < pattern.len() {
+
+            if j == -1 || pattern[i] == pattern[j as usize] {
+                i += 1;
+                j += 1;
+
+                nexts[i] = j;
+            } else {
+                j = nexts[j as usize];
+            }
+        }
+
+        nexts
+    };
+
+    if pattern.is_empty() { return 0 }
+    let pattern : &[u8] = pattern.as_bytes();
+    let test    : &[u8] = test.as_bytes();
 
     let nexts = gen_next(&pattern);
 
@@ -136,29 +158,6 @@ fn kmp(pattern: String, test: String) -> i32 {
     }
 
     -1
-}
-
-fn gen_next(pattern: &Vec<char>) -> Vec<i32> {
-    
-    let mut nexts = vec![-1; pattern.len() + 1];
-    nexts[0] = -1;
-
-    let mut i: usize = 0;
-    let mut j: i32 = -1;
-
-    while i < pattern.len() {
-
-        if j == -1 || pattern[i] == pattern[j as usize] {
-            i += 1;
-            j += 1;
-
-            nexts[i] = j;
-        } else {
-            j = nexts[j as usize];
-        }
-    }
-
-    nexts
 }
 // -----------------------------------------------------------------------------
 

@@ -178,7 +178,7 @@ impl Solution for Solution2 {
 
 fn find_k_th(nums1: &[i32], start1: usize, nums2: &[i32], start2: usize, k: usize) -> f64 {
 
-    use std::cmp::{min, Ord, Ordering};
+    use std::cmp::{min, Ordering};
 
     let len1 = nums1.len() - start1;
     let len2 = nums2.len() - start2;
@@ -213,3 +213,4 @@ fn find_k_th(nums1: &[i32], start1: usize, nums2: &[i32], start2: usize, k: usiz
     }
 }
 // -----------------------------------------------------------------------------
+
