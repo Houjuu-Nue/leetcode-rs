@@ -51,7 +51,7 @@ fn main() -> std::io::Result<()> {
 
     // write test/pxxx/mod.rs
     let t_mod_path    = format!("./tests/{}/mod.rs", doc_module);
-    let t_mod_content = format!("#[cfg(test)] pub mod t{};\n", doc_problem);
+    let t_mod_content = format!("mod t{};\n", doc_problem);
     write_mod_info(t_mod_path, t_mod_content)?;
 
     Ok(())
