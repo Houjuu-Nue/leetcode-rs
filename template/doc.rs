@@ -153,7 +153,6 @@ fn translate_doc(mut file: File, path: String) -> std::io::Result<File> {
         }
     }
 
-    translation.push_str(LINE_PREFIX_V2);
     translation.push_str("\n\n");
 
     let mut file = File::create(&path)?;
