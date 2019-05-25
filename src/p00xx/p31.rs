@@ -34,7 +34,7 @@ impl Solution for Solution0 {
 
     fn next_permutation(&self, nums: &mut Vec<i32>) {
 
-        for i in (0..(nums.len() - 1)).rev() {
+         for i in (0..(nums.len() - 1)).rev() {
             for j in ((i + 1)..nums.len()).rev() {
 
                 if nums[j] > nums[i] {
@@ -44,14 +44,45 @@ impl Solution for Solution0 {
                 }
             }
         }
+        
+        nums.sort_unstable();
+    }
+}
+// -----------------------------------------------------------------------------
 
-        let mut min = nums.len() - 1;
-        for i in 1..(nums.len() - 1) {
-            if nums[i] < nums[min] { min = i; }
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Single Pass Approach.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn next_permutation(&self, nums: &mut Vec<i32>) {
+
+        let len = nums.len();
+        if len < 2 { return }
+
+        let mut i = (len - 2) as i32;
+        while i >= 0 {
+            if nums[i as usize] < nums[(i + 1) as usize] { break }
+            i -= 1;
         }
 
-        nums.swap(0, min);
-        nums[1..].sort_unstable();
+        if i < 0 {
+            nums.sort_unstable();
+            return
+        }
+
+        let i = i as usize;
+        let mut j = len - 1;
+        while i < j {
+            if nums[i] < nums[j] {
+                nums.swap(i, j);
+                nums[(i + 1)..len].sort_unstable();
+                return
+            }
+            j -= 1;
+        }
+
    }
 }
 // -----------------------------------------------------------------------------
