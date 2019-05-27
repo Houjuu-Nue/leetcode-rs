@@ -109,3 +109,37 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Stack.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn longest_valid_parentheses(&self, s: String) -> i32 {
+
+        let mut max = 0;
+        let mut stack = Vec::new();
+        stack.push(-1);
+
+        for (i, ch) in s.chars().enumerate() {
+            let i = i as i32;
+
+            match ch {
+                | '(' => stack.push(i),
+                | ')' => {
+                    stack.pop();
+                    if let Some(last_invalid) = stack.last().cloned() {
+                        max = max.max((i - last_invalid) as usize);
+                    } else {
+                        stack.push(i);
+                    }
+                },
+                | _ => unreachable!()
+            }
+        }
+
+        max as i32
+    }
+}
+// -----------------------------------------------------------------------------
+
