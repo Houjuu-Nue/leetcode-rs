@@ -14,6 +14,7 @@ fn t32() {
         Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
         Box::new(Solution2) as Box<dyn Solution>,
+        Box::new(Solution3) as Box<dyn Solution>,
     ];
     
     let test_cases = [

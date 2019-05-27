@@ -143,3 +143,63 @@ impl Solution for Solution2 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 4: Without extra space.
+pub struct Solution3;
+impl Solution for Solution3 {
+
+    fn longest_valid_parentheses(&self, s: String) -> i32 {
+
+        use std::cmp::Ordering;
+        
+        let mut max = 0;
+
+        { // travel from left to right
+            let mut left  = 0;
+            let mut right = 0;
+            
+            for ch in s.chars() {
+                match ch {
+                    | '(' => left  += 1,
+                    | ')' => right += 1,
+                    | _ => unreachable!()
+                }
+
+                match left.cmp(&right) {
+                    | Ordering::Less => {
+                        left  = 0;
+                        right = 0;
+                    },
+                    | Ordering::Equal => max = max.max(2 * right),
+                    | Ordering::Greater => {},
+                }
+            }
+        }
+
+        { // travel from right to left
+            let mut left  = 0;
+            let mut right = 0;
+            
+            for ch in s.chars().rev() {
+                match ch {
+                    | '(' => left  += 1,
+                    | ')' => right += 1,
+                    | _ => unreachable!()
+                }
+
+                match right.cmp(&left) {
+                    | Ordering::Less => {
+                        left  = 0;
+                        right = 0;
+                    },
+                    | Ordering::Equal => max = max.max(2 * left),
+                    | Ordering::Greater => {},
+                }
+            }
+        }
+            
+        max as i32
+    }
+}
+// -----------------------------------------------------------------------------
+
