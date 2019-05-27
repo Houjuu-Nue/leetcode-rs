@@ -41,7 +41,6 @@ impl Solution for Solution0 {
 
                 let sub_string = &s[i..j];
                 if is_valid(sub_string) {
-                    dbg!(sub_string);
                     max = max.max(sub_string.len());
                 }
             }
@@ -70,6 +69,43 @@ fn is_valid(s: &str) -> bool {
     }
 
     parenthes == 0
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Dynamic Programming.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn longest_valid_parentheses(&self, s: String) -> i32 {
+
+        let s: Vec<char> = s.chars().collect();
+        let mut max = 0;
+        let mut dp = vec![0; s.len()];
+
+        for i in 1..s.len() {
+            if s[i] == ')' {
+                if s[i - 1] == '(' {
+                    if i > 1 {
+                        dp[i] = dp[i - 2] + 2;
+                    } else {
+                        dp[i] = 2;
+                    }
+                } else if i - dp[i - 1] > 0 && s[i - dp[i - 1] - 1] == '(' {
+                    if i - dp[i - 1] > 1 {
+                        dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2;
+                    } else {
+                        dp[i] = dp[i - 1] + 2;
+                    }
+                }
+
+                max = max.max(dp[i]);
+            }
+        }
+
+        max as i32
+    }
 }
 // -----------------------------------------------------------------------------
 
