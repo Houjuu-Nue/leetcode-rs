@@ -197,7 +197,7 @@ impl Solution for Solution3 {
                 }
             }
         }
-            
+          
         max as i32
     }
 }

@@ -1,6 +1,6 @@
 # Leetcode-rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-32/1036-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-33/1036-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#33](src/p00xx/p33.rs) | [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | Medium     | 0ms, 2MB    |
 | [#32](src/p00xx/p32.rs) | [Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/) | Hard       | 0ms, 2.1MB  |
 | [#31](src/p00xx/p31.rs) | [Next Permutation](https://leetcode.com/problems/next-permutation/) | Medium     | 0ms, 2MB    |
 | [#30](src/p00xx/p30.rs) | [Substring with Concatenation of All Words](https://leetcode.com/problems/substring-with-concatenation-of-all-words/) | Hard       | 64ms, 2.3MB |
