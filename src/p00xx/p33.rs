@@ -88,3 +88,42 @@ fn binary_search(nums: &[i32], target: i32) -> Option<usize> {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Simplify Binary Search.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn search(&self, nums: Vec<i32>, target: i32) -> i32 {
+        
+        if nums.is_empty() { return 0; }
+        let mut left = 0;
+        let mut right = nums.len() - 1;
+
+        while left <= right && right != std::usize::MAX {
+
+            let middle = (left + right) / 2;
+            if nums[middle] == target { return middle as i32 }
+            if nums[left]   == target { return left as i32 }
+            if nums[right]  == target { return right as i32 }
+
+            if nums[left] < nums[middle] {
+                if nums[left] <= target && target < nums[middle] {
+                    right = middle - 1;
+                } else {
+                    left = middle + 1;
+                }
+            } else {
+                if nums[middle] < target && target <= nums[right] {
+                    left = middle + 1;
+                } else {
+                    right = middle - 1;
+                }
+            }
+        }
+
+        -1
+    }
+}
+// -----------------------------------------------------------------------------
+
