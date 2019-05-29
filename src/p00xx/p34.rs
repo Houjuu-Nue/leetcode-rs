@@ -89,3 +89,21 @@ fn binary_search(nums: &Vec<i32>, target: i32) -> Option<usize> {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Linear Scan.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn search_range(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
+
+        if let Some(left) = nums.iter().position(|&v| v == target) {
+            let right = nums.iter().rev().position(|&v| v == target).unwrap();
+            vec![left as i32, (nums.len() - right - 1) as i32]
+        } else {
+            vec![-1, -1]
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
