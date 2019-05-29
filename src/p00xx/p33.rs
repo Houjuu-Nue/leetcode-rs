@@ -11,7 +11,7 @@
 //!
 //! You may assume no duplicate exists in the array.
 //!
-//! Your algorithm's runtime complexity must be in the order of O(log n).
+//! Your algorithm's runtime complexity must be in the order of *O(log n)*.
 //!
 //! **Example 1:**
 //! ```text
