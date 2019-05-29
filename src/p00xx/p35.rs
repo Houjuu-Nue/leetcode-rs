@@ -74,38 +74,18 @@ impl Solution for Solution1 {
 
         let mut left = 0;
         let mut right = nums.len();
-        let mut flag = true;
 
         while left < right {
             let mid = (left + right) / 2;
 
             match nums[mid].cmp(&target) {
-                | Ordering::Equal => return mid as i32,
-                | Ordering::Less => {
-                    left = mid + 1;
-                    flag = true;
-                },
-                | Ordering::Greater => {
-                    if mid == 0 { return 0 }
-                    right = mid - 1;
-                    flag = false;
-                },
+                | Ordering::Equal   => return mid as i32,
+                | Ordering::Less    => left  = mid + 1,
+                | Ordering::Greater => right = mid,
             }
         }
 
-        if flag {
-            if left == nums.len() || nums[left] >= target {
-                left as i32
-            } else {
-                left as i32 + 1
-            }
-        } else {
-            if nums[right] < target {
-                right as i32 + 1
-            } else {
-                right as i32
-            }
-        }
+        right as i32
     }
 }
 // -----------------------------------------------------------------------------
