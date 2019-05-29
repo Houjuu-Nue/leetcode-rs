@@ -138,3 +138,52 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 0: One Pass.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn is_valid_sudoku(&self, board: Vec<Vec<char>>) -> bool {
+
+        use std::collections::HashSet;
+
+        for i in 0..9 {
+            let mut rows    = HashSet::new();
+            let mut columns = HashSet::new();
+            let mut subbox  = HashSet::new();
+
+            for j in 0..9 {
+                // verify rows
+                let row_ch = board[i][j];
+                if row_ch != '.' && rows.contains(&row_ch) {
+                    return false
+                } else {
+                    rows.insert(row_ch);
+                }
+                
+                // verify columns
+                let column_ch = board[j][i];
+                if column_ch != '.' && columns.contains(&column_ch) {
+                    return false
+                } else {
+                    columns.insert(column_ch);
+                }
+
+                // verify sub-box
+                let row    = 3 * (i / 3) + j / 3;
+                let column = 3 * (i % 3) + j % 3;
+                let subbox_ch = board[row][column];
+                if subbox_ch != '.' && subbox.contains(&subbox_ch) {
+                    return false
+                } else {
+                    subbox.insert(subbox_ch);
+                }
+            }
+        }
+       
+        true
+    }
+}
+// -----------------------------------------------------------------------------
+
