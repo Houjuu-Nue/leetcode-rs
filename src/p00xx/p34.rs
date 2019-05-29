@@ -43,7 +43,7 @@ impl Solution for Solution0 {
 
     fn search_range(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
 
-        if let Some(location) = binary_search(&nums, target) {
+        if let Ok(location) = nums.binary_search(&target) {
             let mut left  = location;
             let mut right = location;
 
@@ -55,37 +55,6 @@ impl Solution for Solution0 {
             vec![-1, -1]
         }
     }
-}
-
-fn binary_search(nums: &Vec<i32>, target: i32) -> Option<usize> {
-    
-    if nums.is_empty() { return None; }
-    let mut left = 0;
-    let mut right = nums.len() - 1;
-
-    while left <= right && right != std::usize::MAX {
-
-        let middle = (left + right) / 2;
-        if nums[middle] == target { return Some(middle) }
-        if nums[left]   == target { return Some(left) }
-        if nums[right]  == target { return Some(right) }
-
-        if nums[left] < nums[middle] {
-            if nums[left] <= target && target < nums[middle] {
-                right = middle - 1;
-            } else {
-                left = middle + 1;
-            }
-        } else {
-            if nums[middle] < target && target <= nums[right] {
-                left = middle + 1;
-            } else {
-                right = middle - 1;
-            }
-        }
-    }
-
-    None
 }
 // -----------------------------------------------------------------------------
 
@@ -103,6 +72,55 @@ impl Solution for Solution1 {
         } else {
             vec![-1, -1]
         }
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Binary Seach.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn search_range(&self, nums: Vec<i32>, target: i32) -> Vec<i32> {
+
+        if nums.is_empty() { return vec![-1, -1] }
+
+        // search the left bound.
+        let mut left  = 0;
+        let mut right = nums.len();
+
+        while left < right {
+            let middle = (left + right) / 2;
+
+            if nums[middle] < target {
+                left = middle + 1;
+            } else {
+                right = middle;
+            }
+        }
+
+        if left == nums.len() || nums[left] != target { return vec![-1, -1] }
+        let left_bound = left;
+
+        // search the right bound.
+        left = 0;
+        right = nums.len();
+        
+        while left < right {
+            let middle = (left + right) / 2;
+            
+            if nums[middle] <= target {
+                left = middle + 1;
+            } else {
+                right = middle;
+            }
+        }
+
+        let right_bound = right - 1;
+
+        vec![left_bound as i32, right_bound as i32]
     }
 }
 // -----------------------------------------------------------------------------
