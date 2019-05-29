@@ -35,7 +35,6 @@
 //!
 
 
-
 #[derive(Debug, Clone)]
 pub struct Input {
     pub nums: Vec<i32>,
@@ -59,6 +58,54 @@ impl Solution for Solution0 {
             | Err(insert_location) => insert_location as i32
         }
 
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Binary Search and insert.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn search_insert(&self, nums: Vec<i32>, target: i32) -> i32 {
+
+        use std::cmp::Ordering;
+
+        let mut left = 0;
+        let mut right = nums.len();
+        let mut flag = true;
+
+        while left < right {
+            let mid = (left + right) / 2;
+
+            match nums[mid].cmp(&target) {
+                | Ordering::Equal => return mid as i32,
+                | Ordering::Less => {
+                    left = mid + 1;
+                    flag = true;
+                },
+                | Ordering::Greater => {
+                    if mid == 0 { return 0 }
+                    right = mid - 1;
+                    flag = false;
+                },
+            }
+        }
+
+        if flag {
+            if left == nums.len() || nums[left] >= target {
+                left as i32
+            } else {
+                left as i32 + 1
+            }
+        } else {
+            if nums[right] < target {
+                right as i32 + 1
+            } else {
+                right as i32
+            }
+        }
     }
 }
 // -----------------------------------------------------------------------------
