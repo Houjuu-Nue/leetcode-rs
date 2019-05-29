@@ -1,6 +1,6 @@
 # Leetcode-rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-35/1036-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-36/1050-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#36](src/p00xx/p36.rs) | [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)  | Medium     | 8ms, 1.9MB  |
 | [#35](src/p00xx/p35.rs) | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy       | 0ms, 2MB    |
 | [#34](src/p00xx/p34.rs) | [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | Medium     | 0ms, 2.4MB  |
 | [#33](src/p00xx/p33.rs) | [Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/) | Medium     | 0ms, 2MB    |
@@ -51,8 +52,4 @@ cargo test -- t1 # run test case for problem #1
 | [#3](src/p00xx/p3.rs)   | [Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/) | Medium     | 4ms, 2.5MB  |
 | [#2](src/p00xx/p2.rs)   | [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/) | Medium     | 8ms, 2.3MB  |
 | [#1](src/p00xx/p1.rs)   | [Two Sum](https://leetcode.com/problems/two-sum/)            | Easy       | 4ms, 3.3MB  |
-
-## A thanks to
-
-- [LeetCodeAnimation](https://github.com/MisterBooo/LeetCodeAnimation)
 
