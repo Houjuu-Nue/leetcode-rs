@@ -13,7 +13,7 @@
 //!
 //! 3. Each of the 9 `3x3` sub-boxes of the grid must contain the digits `1-9` without repetition.
 //!
-//! ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png).
+//! ![](https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Sudoku-by-L2G-20050714.svg/250px-Sudoku-by-L2G-20050714.svg.png)
 //!
 //! A partially filled sudoku which is valid.
 //!
