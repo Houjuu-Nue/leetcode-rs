@@ -54,7 +54,6 @@ impl Solution for Solution0 {
         let mut digits = String::from("1");
         for _ in 1..(n as usize) {
             digits = count(digits);
-            dbg!(&digits);
         }
 
         digits
