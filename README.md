@@ -1,6 +1,6 @@
 # Leetcode-rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-40/1050-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-41/1050-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#42](src/p00xx/p42.rs) | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) | Hard       | 0ms, 2.1MB  |
 | [#41](src/p00xx/p41.rs) | [First Missing Positive](https://leetcode.com/problems/first-missing-positive/) | Hard       | 0ms, 1.9MB  |
 | [#40](src/p00xx/p40.rs) | [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) | Medium     | 0ms, 2MB    |
 | [#39](src/p00xx/p39.rs) | [Combination Sum](https://leetcode.com/problems/combination-sum/) | Medium     | 4ms, 2MB    |

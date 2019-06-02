@@ -61,14 +61,14 @@ impl Solution for Solution0 {
             }
         }
 
-        for (i, &num) in nums.iter().enumerate() {
+        for (i, num) in nums.into_iter().enumerate() {
             let i = (i + 1) as i32;
             if i != num {
                 return i
             }
         }
         
-        (nums.len() + 1) as i32
+        len
     }
 }
 // -----------------------------------------------------------------------------
