@@ -90,3 +90,28 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Brute Force.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn trap(&self, height: Vec<i32>) -> i32 {
+
+        let mut sum_water = 0;
+        for i in 1..(height.len() - 1) {
+            
+            // Search the left part for max bar size.
+            let max_left  = height[0..=i].iter().max().unwrap();
+            // Search the right part for max bar size.
+            let max_right = height[i..].iter().max().unwrap();
+
+            let water_height = max_left.min(max_right) - height[i];
+            sum_water += water_height;
+        }
+
+        sum_water
+    }
+}
+// -----------------------------------------------------------------------------
+
