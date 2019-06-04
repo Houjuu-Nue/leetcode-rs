@@ -128,20 +128,50 @@ impl Solution for Solution2 {
             last_height = last_height.max(h);
             last_height
         }).collect();
-        dbg!(&left_maxs);
 
         let mut last_height = 0;
         let right_maxs: Vec<i32> = height.iter().rev().map(|&h| {
             last_height = last_height.max(h);
             last_height
         }).collect();
-        dbg!(&right_maxs);
-        dbg!(&height);
 
-        left_maxs.iter().zip(right_maxs.iter().rev()).enumerate()
-            .map(|(i, (left, right))| left.min(right) - height[i])
+        left_maxs.iter().zip(right_maxs.iter().rev()).zip(height.iter())
+            .map(|((left, right), h)| left.min(right) - h)
             .sum()
+    }
+}
+// -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 3: Using Stack.
+pub struct Solution3;
+impl Solution for Solution3 {
+
+    fn trap(&self, height: Vec<i32>) -> i32 {
+
+        let mut stack: Vec<usize> = Vec::new();
+        let mut i = 0;
+        let mut sum_water = 0;
+
+        while i < height.len() {
+            
+            let h = height[i];
+            if let Some(i_bottom) = stack.last().cloned().filter(|&top| h > height[top]) {
+                stack.pop();
+                if let Some(i_top) = stack.last().cloned() {
+                    let distance = i - i_top - 1;
+                    let water_height = h.min(height[i_top]) - height[i_bottom];
+                    sum_water += distance as i32 * water_height;
+                }
+            } else {
+                stack.push(i);
+                i += 1;
+            }
+
+        }
+
+        sum_water
     }
 }
 // -----------------------------------------------------------------------------
