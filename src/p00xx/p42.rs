@@ -168,10 +168,49 @@ impl Solution for Solution3 {
                 stack.push(i);
                 i += 1;
             }
-
         }
 
         sum_water
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 4: Using Two Pointers.
+pub struct Solution4;
+impl Solution for Solution4 {
+
+    fn trap(&self, height: Vec<i32>) -> i32 {
+
+        if height.is_empty() { return 0 }
+
+        let mut waters = 0;
+
+        let mut left = 0;
+        let mut left_max = 0;
+        let mut right = height.len() - 1;
+        let mut right_max = 0;
+
+        while left < right {
+            if height[left] < height[right] {
+                if height[left] > left_max {
+                    left_max = height[left];
+                } else {
+                    waters += left_max - height[left];
+                }
+                left += 1;
+            } else {
+                if height[right] > right_max {
+                    right_max = height[right];
+                } else {
+                    waters += right_max - height[right];
+                }
+                right -= 1;
+            }
+        }
+
+        waters
     }
 }
 // -----------------------------------------------------------------------------
