@@ -115,3 +115,34 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Dynamic Programming.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn trap(&self, height: Vec<i32>) -> i32 {
+
+        let mut last_height = 0;
+        let left_maxs: Vec<i32> = height.iter().map(|&h| {
+            last_height = last_height.max(h);
+            last_height
+        }).collect();
+        dbg!(&left_maxs);
+
+        let mut last_height = 0;
+        let right_maxs: Vec<i32> = height.iter().rev().map(|&h| {
+            last_height = last_height.max(h);
+            last_height
+        }).collect();
+        dbg!(&right_maxs);
+        dbg!(&height);
+
+        left_maxs.iter().zip(right_maxs.iter().rev()).enumerate()
+            .map(|(i, (left, right))| left.min(right) - height[i])
+            .sum()
+
+    }
+}
+// -----------------------------------------------------------------------------
+
