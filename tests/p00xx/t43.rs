@@ -12,17 +12,10 @@ fn t43() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        // Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution1) as Box<dyn Solution>,
     ];
     
     let test_cases = [
-        TestCase {
-            input: Input {
-                num1: String::from("123456789"),
-                num2: String::from("987654321"),
-            },
-            answer: String::from("121932631112635269"),
-        },
         TestCase {
             input: Input {
                 num1: String::from("2"),
@@ -36,6 +29,13 @@ fn t43() {
                 num2: String::from("456"),
             },
             answer: String::from("56088"),
+        },
+        TestCase {
+            input: Input {
+                num1: String::from("123456789"),
+                num2: String::from("987654321"),
+            },
+            answer: String::from("121932631112635269"),
         },
     ];
 

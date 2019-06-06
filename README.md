@@ -16,7 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
-| [#43](src/p00xx/p43.rs) | [Multiply Strings](https://leetcode.com/problems/multiply-strings/) | Medium     | 4ms, 2MB    |
+| [#43](src/p00xx/p43.rs) | [Multiply Strings](https://leetcode.com/problems/multiply-strings/) | Medium     | 0ms, 2MB    |
 | [#42](src/p00xx/p42.rs) | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/) | Hard       | 0ms, 2.1MB  |
 | [#41](src/p00xx/p41.rs) | [First Missing Positive](https://leetcode.com/problems/first-missing-positive/) | Hard       | 0ms, 1.9MB  |
 | [#40](src/p00xx/p40.rs) | [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) | Medium     | 0ms, 2MB    |

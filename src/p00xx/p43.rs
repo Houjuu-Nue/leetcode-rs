@@ -42,7 +42,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0: Multiply Simulation.
+/// Approach 0: Multiply Simulation(Burte Force).
 pub struct Solution0;
 impl Solution for Solution0 {
 
@@ -106,6 +106,45 @@ fn plus_to(num: Vec<u8>, forward: usize, to: &mut Vec<u8>) {
     
     if carry > 0 && i + forward > num.len() {
         to.push(carry);
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Multiply Simulation(Simpilify).
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn multiply(&self, num1: String, num2: String) -> String {
+
+        let num1: Vec<u32> = num1.chars().map(|ch| ch.to_digit(10).unwrap()).collect();
+        let num2: Vec<u32> = num2.chars().map(|ch| ch.to_digit(10).unwrap()).collect();
+
+        let mut ans: Vec<u32> = vec![0; num1.len() + num2.len()];
+
+        for (i, n1) in num1.into_iter().rev().enumerate() {
+            for (j, n2) in num2.iter().rev().cloned().enumerate() {
+                ans[i + j] += n1 * n2;
+            }
+        }
+
+        // handle carry
+        let mut carry = 0;
+        for i in 0..ans.len() {
+            let sum = ans[i] + carry;
+            carry  = sum / 10;
+            ans[i] = sum % 10;
+        }
+
+        // clear front zero
+        let first_non_zero_pos = ans.iter().rev().position(|&n| n != 0).unwrap_or(ans.len() - 1);
+        ans.truncate(ans.len() - first_non_zero_pos);
+
+        // convert to String
+        ans.into_iter().rev()
+            .map(|digit| (digit as u8 + '0' as u8) as char)
+            .collect()
     }
 }
 // -----------------------------------------------------------------------------
