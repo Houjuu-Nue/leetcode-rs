@@ -12,17 +12,17 @@ fn t44() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        // Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution1) as Box<dyn Solution>,
     ];
     
     let test_cases = [
-        // TestCase {
-            // input: Input {
-                // s: String::from("aaaababbbaaabaabbbbabaababaabbabbaabababbaaaaaaabba"),
-                // p: String::from("baaaaba*****b***ab******"),
-            // },
-            // answer: false,
-        // },
+        TestCase {
+            input: Input {
+                s: String::from("aaaababbbaaabaabbbbabaababaabbabbaabababbaaaaaaabba"),
+                p: String::from("baaaaba*****b***ab******"),
+            },
+            answer: false,
+        },
         TestCase {
             input: Input {
                 s: String::from("aa"),
