@@ -79,6 +79,7 @@ pub trait Solution {
 /// Approach 0
 pub struct Solution0;
 impl Solution for Solution0 {
+
     fn is_match(&self, s: String, p: String) -> bool {
         
         let s: Vec<char> = s.chars().collect();
@@ -139,6 +140,7 @@ fn is_match_v0(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
 /// Approach 1: Recursion(Simpified version of Approach 0)
 pub struct Solution1;
 impl Solution for Solution1 {
+    
     fn is_match(&self, s: String, p: String) -> bool {
         
         let s: Vec<char> = s.chars().collect();
@@ -179,6 +181,7 @@ fn is_match_v1(s: &[char], s_start: usize, p: &[char], p_start: usize) -> bool {
 /// Approach 2: Dynamic Programming(Bottom-Up Variation)
 pub struct Solution2;
 impl Solution for Solution2 {
+
     fn is_match(&self, s: String, p: String) -> bool {
         
         if p.is_empty() { return s.is_empty() }
@@ -196,7 +199,7 @@ fn is_match_v2(s: &[char], p: &[char]) -> bool {
     states[s.len()][p.len()] = true;
 
     for i in (0..=s.len()).rev() {
-        for j in (0..=(p.len() - 1)).rev() {
+        for j in (0..p.len()).rev() {
 
             let first_match = i < s.len() && (p[j] == s[i] || p[j] == '.');
             
@@ -211,3 +214,4 @@ fn is_match_v2(s: &[char], p: &[char]) -> bool {
     states[0][0]
 }
 // -----------------------------------------------------------------------------
+
