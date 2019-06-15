@@ -1,6 +1,6 @@
 # Leetcode-rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-44/1050-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-45/1080-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -24,6 +24,7 @@ cargo test -- t1 # run test case for problem #1
 | [#40](src/p00xx/p40.rs) | [Combination Sum II](https://leetcode.com/problems/combination-sum-ii/) | Medium     | 0ms, 2MB    |
 | [#39](src/p00xx/p39.rs) | [Combination Sum](https://leetcode.com/problems/combination-sum/) | Medium     | 4ms, 2MB    |
 | [#38](src/p00xx/p38.rs) | [Count and Say](https://leetcode.com/problems/count-and-say/) | Easy       | 0ms, 2.1MB  |
+| [#37](src/p00xx/p37.rs) | [Sudoku Solver](https://leetcode.com/problems/sudoku-solver/) | Hard       | 4ms, 2MB    |
 | [#36](src/p00xx/p36.rs) | [Valid Sudoku](https://leetcode.com/problems/valid-sudoku/)  | Medium     | 8ms, 1.9MB  |
 | [#35](src/p00xx/p35.rs) | [Search Insert Position](https://leetcode.com/problems/search-insert-position/) | Easy       | 0ms, 2MB    |
 | [#34](src/p00xx/p34.rs) | [Find First and Last Position of Element in Sorted Array](https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/) | Medium     | 0ms, 2.4MB  |

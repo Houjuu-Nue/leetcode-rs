@@ -92,8 +92,8 @@ fn is_fill_ok(board: &[Vec<char>], x: usize, y: usize, value: char) -> bool {
     }
 
     // check sub-box
-    let row    = (x / 3) * 3;
-    let column = (y / 3) * 3;
+    let row    = x - x % 3;
+    let column = y - y % 3;
     for i in row..(row + 3) {
         for j in column..(column + 3) {
             if i != x && j != y && board[i][j] == value { return false }
