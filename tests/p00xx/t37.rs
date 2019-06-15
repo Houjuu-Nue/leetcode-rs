@@ -36,11 +36,11 @@ fn t37() {
 
             print_sudoku(&test_case.input);
             solution.solve_sudoku(&mut test_case.input);
+            print_sudoku(&test_case.input);
 
             assert!(is_valid_sudoku(&test_case.input),
-                "Test failed on Solution {} TestCase {}.\n\
-                Correct  answer is {:?}\n",
-                i, j, &test_case.input);
+                "Test failed on Solution {} TestCase {}.\n",
+                i, j);
         }
     }
 }
