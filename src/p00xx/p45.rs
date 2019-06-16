@@ -64,3 +64,32 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Dynamic Programming.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn jump(&self, nums: Vec<i32>) -> i32 {
+
+        let mut steps = vec![std::i32::MAX; nums.len()];
+        steps[0] = 0;
+        
+        for i in 0..nums.len() {
+            let max_step = nums[i] as usize;
+
+            for j in 1..=max_step {
+                if i + j < nums.len() {
+
+                    if steps[i] + 1 < steps[i + j] {
+                        steps[i + j] = steps[i] + 1;
+                    }
+                }
+            }
+        }
+
+        steps.pop().unwrap()
+    }
+}
+// -----------------------------------------------------------------------------
+
