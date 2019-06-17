@@ -30,7 +30,7 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: DFS.
 pub struct Solution0;
 
 use std::collections::HashMap;
@@ -43,13 +43,13 @@ impl Solution for Solution0 {
 
         let mut result = Vec::new();
         let mut nums_ = Vec::new();
-        recursive_permute(&mut nums_, &nums, &mut maps, &mut result);
+        dfs(&mut nums_, &nums, &mut maps, &mut result);
 
         result
     }
 }
 
-fn recursive_permute(nums: &mut Vec<i32>, candidate: &Vec<i32>, maps: &mut HashMap<i32, bool>, result: &mut Vec<Vec<i32>>) {
+fn dfs(nums: &mut Vec<i32>, candidate: &Vec<i32>, maps: &mut HashMap<i32, bool>, result: &mut Vec<Vec<i32>>) {
 
     if nums.len() == maps.len() {
         result.push(nums.clone());
@@ -61,10 +61,39 @@ fn recursive_permute(nums: &mut Vec<i32>, candidate: &Vec<i32>, maps: &mut HashM
             *(maps.get_mut(&num).unwrap()) = true;
 
             nums.push(num.clone());
-            recursive_permute(nums, candidate, maps, result);
+            dfs(nums, candidate, maps, result);
             nums.pop();
 
             *(maps.get_mut(&num).unwrap()) = false;
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 0: Swap Recursivily.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn permute(&self, mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+
+        let mut result = Vec::new();
+        swap_recursivily(&mut nums, 0, &mut result);
+
+        result
+    }
+}
+
+fn swap_recursivily(nums: &mut Vec<i32>, current: usize, result: &mut Vec<Vec<i32>>) {
+
+    if current == nums.len() {
+        result.push(nums.clone());
+    } else {
+        for i in current..nums.len() {
+            nums.swap(i, current);
+            swap_recursivily(nums, current + 1, result);
+            nums.swap(i, current);
         }
     }
 }
