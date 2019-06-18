@@ -72,7 +72,7 @@ fn dfs(nums: &mut Vec<i32>, candidate: &Vec<i32>, maps: &mut HashMap<i32, bool>,
 
 
 // -----------------------------------------------------------------------------
-/// Approach 0: Swap Recursivily.
+/// Approach 1: Swap Recursivily.
 pub struct Solution1;
 impl Solution for Solution1 {
 
@@ -96,6 +96,44 @@ fn swap_recursivily(nums: &mut Vec<i32>, current: usize, result: &mut Vec<Vec<i3
             nums.swap(i, current);
         }
     }
+}
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 2: Enumerate Next Permutation.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn permute(&self, mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+
+        let mut result = Vec::new();
+        let total_permutation: usize = (2..=nums.len())
+            .fold(1, |sum, i| sum * i);
+
+        for _ in 0..total_permutation {
+            next_permutation(&mut nums);
+            result.push(nums.clone());
+        }
+
+        result
+    }
+}
+
+
+fn next_permutation(nums: &mut Vec<i32>) {
+
+     for i in (0..(nums.len() - 1)).rev() {
+        for j in ((i + 1)..nums.len()).rev() {
+
+            if nums[j] > nums[i] {
+                nums.swap(i, j);
+                nums[(i + 1)..].sort_unstable();
+                return
+            }
+        }
+    }
+    
+    nums.sort_unstable();
 }
 // -----------------------------------------------------------------------------
 
