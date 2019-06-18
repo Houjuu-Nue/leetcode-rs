@@ -27,16 +27,16 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0
+/// Approach 0: DFS.
 pub struct Solution0;
 impl Solution for Solution0 {
 
     fn permute_unique(&self, nums: Vec<i32>) -> Vec<Vec<i32>> {
 
         let mut used = vec![false; nums.len()];
-
         let mut result = Vec::new();
         let mut _nums = Vec::new();
+
         dfs(&mut _nums, &nums, &mut used, &mut result);
 
         result
@@ -63,6 +63,43 @@ fn dfs(nums: &mut Vec<i32>, candidate: &[i32], used: &mut [bool], result: &mut V
 
             used[i] = false;
             set.insert(num);
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Swap Recursivily.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn permute_unique(&self, mut nums: Vec<i32>) -> Vec<Vec<i32>> {
+
+        let mut result = Vec::new();
+        swap_recursivily(&mut nums, 0, &mut result);
+
+        result
+    }
+}
+
+fn swap_recursivily(nums: &mut Vec<i32>, current: usize, result: &mut Vec<Vec<i32>>) {
+
+    use std::collections::HashSet;
+    let mut set = HashSet::new();
+
+    if current == nums.len() {
+        result.push(nums.clone());
+    } else {
+        for i in current..nums.len() {
+            if set.contains(&nums[i]) == false {
+
+                nums.swap(i, current);
+                swap_recursivily(nums, current + 1, result);
+                nums.swap(i, current);
+                
+                set.insert(nums[i]);
+            }
         }
     }
 }
