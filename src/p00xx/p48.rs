@@ -51,7 +51,6 @@
 //!
 
 
-
 pub type Input  = Vec<Vec<i32>>;
 pub type Output = ();
 
@@ -79,6 +78,40 @@ impl Solution for Solution0 {
 
         for row in matrix.iter_mut() {
             row.reverse();
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Formal Rotation.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn rotate(&self, matrix: &mut Vec<Vec<i32>>) {
+
+        let mut bound1 = 0;
+        let mut bound2 = matrix.len() - 1;
+        
+        while bound1 < bound2 {
+            let mut i = bound1;
+            let mut j = bound2;
+
+            while i != bound2 {
+                
+                let temp = matrix[bound1][i];          // save top-left
+                matrix[bound1][i] = matrix[j][bound1]; // top-left     = bottom-left
+                matrix[j][bound1] = matrix[bound2][j]; // bottom-left  = bottom-right
+                matrix[bound2][j] = matrix[i][bound2]; // bottom-right = top-right
+                matrix[i][bound2] = temp;              // top-right    = top-left
+                
+                i += 1;
+                j -= 1;
+            }
+
+            bound1 += 1;
+            bound2 -= 1;
         }
     }
 }
