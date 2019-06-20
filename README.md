@@ -1,6 +1,6 @@
 # Leetcode.rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-48/1080-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-49/1080-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#49](src/p00xx/p49.rs) | [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Medium     | 8ms, 4.4MB  |
 | [#48](src/p00xx/p48.rs) | [Rotate Image](https://leetcode.com/problems/rotate-image/)  | Medium     | 0ms, 2.1MB  |
 | [#47](src/p00xx/p47.rs) | [Permutations II](https://leetcode.com/problems/permutations-ii/) | Medium     | 4ms, 2.1MB  |
 | [#46](src/p00xx/p46.rs) | [Permutations](https://leetcode.com/problems/permutations/)  | Medium     | 0ms, 2MB    |
