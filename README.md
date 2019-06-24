@@ -16,7 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Number of solutions |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ------------------- |
-| [#51](src/p00xx/p51.rs) | N-Queens                                                     |            |                     |
+| [#51](src/p00xx/p51.rs) | [N-Queens](https://leetcode.com/problems/n-queens/)          | Hard       |                     |
 | [#50](src/p00xx/p50.rs) | [Pow(x, n)](https://leetcode.com/problems/powx-n/)           | Medium     | 2                   |
 | [#49](src/p00xx/p49.rs) | [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Medium     | 1                   |
 | [#48](src/p00xx/p48.rs) | [Rotate Image](https://leetcode.com/problems/rotate-image/)  | Medium     | 2                   |
