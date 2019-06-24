@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Best Submit |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ----------- |
+| [#50](src/p00xx/p50.rs) | [Pow(x, n)](https://leetcode.com/problems/powx-n/)           | Medium     | 0ms, 2.3MB  |
 | [#49](src/p00xx/p49.rs) | [Group Anagrams](https://leetcode.com/problems/group-anagrams/) | Medium     | 8ms, 4.4MB  |
 | [#48](src/p00xx/p48.rs) | [Rotate Image](https://leetcode.com/problems/rotate-image/)  | Medium     | 0ms, 2.1MB  |
 | [#47](src/p00xx/p47.rs) | [Permutations II](https://leetcode.com/problems/permutations-ii/) | Medium     | 4ms, 2.1MB  |
