@@ -43,9 +43,34 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0: Recursion with fast powering.
+/// Approach 0: Brute Force.
 pub struct Solution0;
 impl Solution for Solution0 {
+
+    fn my_pow(&self, x: f64, n: i32) -> f64 {
+
+        if n == 0 { return 1.0 }
+        if n > 0 {
+            let mut product = 1.0;
+            for _ in 1..=(n as usize) {
+                product *= x;
+            }
+            product - product % 0.000001
+        } else { // n < 0
+            let mut product = 1.0;
+            for _ in 1..=(-n as usize) {
+                product /= x;
+            }
+            product - product % 0.000001
+        }
+    }
+}
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Recursion with fast powering.
+pub struct Solution1;
+impl Solution for Solution1 {
 
     fn my_pow(&self, x: f64, n: i32) -> f64 {
         let ans = fast_powering(x, n);
@@ -68,4 +93,5 @@ fn fast_powering(x: f64, n: i32) -> f64 {
     }
 }
 // -----------------------------------------------------------------------------
+
 
