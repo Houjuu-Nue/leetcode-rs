@@ -68,21 +68,25 @@ impl Solution for Solution0 {
 // -----------------------------------------------------------------------------
 
 // -----------------------------------------------------------------------------
-/// Approach 1: Recursion with fast powering.
+/// Approach 1: Fast Powering.
 pub struct Solution1;
 impl Solution for Solution1 {
 
     fn my_pow(&self, x: f64, n: i32) -> f64 {
-        let ans = fast_powering(x, n);
+
+        let ans = fast_powering_recursive(x, n);
+        // or
+        let _ans = fast_powering_non_recursive(x, n);
+        
         ans - ans % 0.000001
     }
 }
 
-fn fast_powering(x: f64, n: i32) -> f64 {
+fn fast_powering_recursive(x: f64, n: i32) -> f64 {
 
     if n == 0 { return 1.0 }
 
-    let half = fast_powering(x, n / 2);
+    let half = fast_powering_recursive(x, n / 2);
 
     if n % 2 == 0 { return half * half }
 
@@ -91,6 +95,28 @@ fn fast_powering(x: f64, n: i32) -> f64 {
     } else {
         half * half / x
     }
+}
+
+fn fast_powering_non_recursive(mut x: f64, n: i32) -> f64 {
+
+    if n == 0 { return 1.0 }
+    
+    let mut ans = 1.0;
+    let mut i = n;
+    
+    while i != 0 {
+        if i % 2 != 0 {
+            ans *= x;
+        }
+        x = x * x;
+        i /= 2;
+    }
+
+    if n < 0 {
+        ans = 1.0 / ans;
+    }
+
+    ans
 }
 // -----------------------------------------------------------------------------
 
