@@ -171,16 +171,13 @@ fn dfs_1d(chessboard: &mut [usize], row: usize, ans: &mut Vec<Vec<String>>) {
 
     if row == chessboard.len() {
         // an answer is found
-        dbg!(&chessboard);
-        if chessboard.iter().all(|&queue_location| queue_location != NO_QUEUE) {
-            let candidate: Vec<String> = chessboard.iter()
-                .map(|&queue_location| {
-                    let mut row = vec!['.'; chessboard.len()];
-                    row[queue_location] = 'Q';
-                    row.into_iter().collect()
-                }).collect();
-            ans.push(candidate);
-        }
+        let candidate: Vec<String> = chessboard.iter()
+            .map(|&queue_location| {
+                let mut row = vec!['.'; chessboard.len()];
+                row[queue_location] = 'Q';
+                row.into_iter().collect()
+            }).collect();
+        ans.push(candidate);
     } else {
         for column in 0..chessboard.len() {
             if is_can_fill_q_1d(chessboard, row, column) {

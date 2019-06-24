@@ -50,3 +50,4 @@ pub mod p48;
 pub mod p49;
 pub mod p50;
 pub mod p51;
+pub mod p52;
