@@ -27,9 +27,31 @@ pub trait Solution {
 }
 
 // -----------------------------------------------------------------------------
-/// Approach 0: Dynamic Programming - Kadane Algorithm.
+/// Approach 0: Brute Force.
 pub struct Solution0;
 impl Solution for Solution0 {
+
+    fn max_sub_array(&self, nums: Vec<i32>) -> i32 {
+
+        let mut max_sum = nums[0];
+
+        for i in 0..nums.len() {
+            for j in (i + 1)..=nums.len() {
+
+                let sum: i32 = nums[i..j].iter().sum();
+                max_sum = sum.max(max_sum);
+            }
+        }
+
+        max_sum
+    }
+}
+// -----------------------------------------------------------------------------
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Dynamic Programming - Kadane Algorithm.
+pub struct Solution1;
+impl Solution for Solution1 {
 
     fn max_sub_array(&self, nums: Vec<i32>) -> i32 {
 

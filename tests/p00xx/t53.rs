@@ -12,10 +12,14 @@ fn t53() {
 
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
-        // Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution1) as Box<dyn Solution>,
     ];
     
     let test_cases = [
+        TestCase {
+            input: vec![-2, 1],
+            answer: 1,
+        },
         TestCase {
             input: vec![-2, 1, -3, 4, -1, 2, 1, -5, 4],
             answer: 6,
