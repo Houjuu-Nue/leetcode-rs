@@ -16,7 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Number of solutions |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ------------------- |
-| [#53](src/p00xx/p53.rs) | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) | Easy       | 1                   |
+| [#53](src/p00xx/p53.rs) | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) | Easy       | 4                   |
 | [#52](src/p00xx/p52.rs) | [N-Queens II](https://leetcode.com/problems/n-queens-ii/)    | Hard       | 1                   |
 | [#51](src/p00xx/p51.rs) | [N-Queens](https://leetcode.com/problems/n-queens/)          | Hard       | 2                   |
 | [#50](src/p00xx/p50.rs) | [Pow(x, n)](https://leetcode.com/problems/powx-n/)           | Medium     | 2                   |
