@@ -149,7 +149,9 @@ fn is_can_fill_q_2d(chessboard: &[Vec<char>], x: usize, y: usize) -> bool {
 /// Approach 1: DFS with 1d chessboard.
 pub struct Solution1;
 
+/// NO_QUEUE means there is no Queue in that row.
 const NO_QUEUE: usize = 10000;
+
 impl Solution for Solution1 {
 
     fn solve_n_queens(&self, n: i32) -> Vec<Vec<String>> {
@@ -159,7 +161,6 @@ impl Solution for Solution1 {
 
         // Use 1d array to represent the chessboard.
         // the i-th element is the column index of the i-th row for an Queue in chessboard.
-        // NO_QUEUE means there is no Queue in that row.
         let mut chessboard = vec![NO_QUEUE; n];
 
         dfs_1d(&mut chessboard, 0, &mut ans);
@@ -197,7 +198,7 @@ fn is_can_fill_q_1d(chessboard: &[usize], row: usize, column: usize) -> bool {
     // there is no conflit in rows
 
     for i in 0..chessboard.len() {
-        // check y-th column.
+        // check i-th column.
         if chessboard[i] == column {
             return false
         }
