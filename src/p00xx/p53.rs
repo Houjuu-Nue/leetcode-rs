@@ -73,3 +73,26 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 2: Improved Brute Force.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn max_sub_array(&self, nums: Vec<i32>) -> i32 {
+
+        let mut max_sum = nums[0];
+
+        for i in 0..nums.len() {
+            let mut sum = 0;
+            for j in i..nums.len() {
+
+                sum += nums[j];
+                max_sum = sum.max(max_sum);
+            }
+        }
+
+        max_sum
+    }
+}
+// -----------------------------------------------------------------------------
+
