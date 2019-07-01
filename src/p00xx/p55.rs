@@ -66,3 +66,31 @@ impl Solution for Solution0 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 1: Set visited.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn can_jump(&self, nums: Vec<i32>) -> bool {
+
+        let mut can_visited = vec![false; nums.len()];
+        can_visited[0] = true;
+        
+        for i in 0..nums.len() {
+            if can_visited[i] == false { return false }
+            let max_step = nums[i] as usize;
+
+            if max_step + i >= nums.len() {
+                return true
+            } else {
+                for j in (i + 1)..=(max_step + i) {
+                    can_visited[j] = true;
+                }
+            }
+        }
+
+        true
+    }
+}
+// -----------------------------------------------------------------------------
+
