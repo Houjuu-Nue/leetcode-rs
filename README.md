@@ -16,7 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Number of solutions |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ------------------- |
-| [#54](src/p00xx/p54.rs) | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) | Medium     | 1                   |
+| [#54](src/p00xx/p54.rs) | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) | Medium     | 2                   |
 | [#53](src/p00xx/p53.rs) | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) | Easy       | 4                   |
 | [#52](src/p00xx/p52.rs) | [N-Queens II](https://leetcode.com/problems/n-queens-ii/)    | Hard       | 1                   |
 | [#51](src/p00xx/p51.rs) | [N-Queens](https://leetcode.com/problems/n-queens/)          | Hard       | 2                   |
