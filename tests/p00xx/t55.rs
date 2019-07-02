@@ -13,9 +13,14 @@ fn t55() {
     let solutions = [
         Box::new(Solution0) as Box<dyn Solution>,
         Box::new(Solution1) as Box<dyn Solution>,
+        Box::new(Solution2) as Box<dyn Solution>,
     ];
     
     let test_cases = [
+        TestCase {
+            input: vec![3, 2, 1, 0, 4],
+            answer: false,
+        },
         TestCase {
             input: vec![1, 2, 3],
             answer: true,
@@ -23,10 +28,6 @@ fn t55() {
         TestCase {
             input: vec![2, 3, 1, 1, 4],
             answer: true,
-        },
-        TestCase {
-            input: vec![3, 2, 1, 0, 4],
-            answer: false,
         },
         TestCase {
             input: vec![0, 2, 3],

@@ -94,3 +94,23 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 2: Backtracking.
+pub struct Solution2;
+impl Solution for Solution2 {
+
+    fn can_jump(&self, nums: Vec<i32>) -> bool {
+        can_jump_from(&nums)
+    }
+}
+
+fn can_jump_from(nums: &[i32]) -> bool {
+
+    if nums[0] as usize + 1 >= nums.len() { return true }
+    
+    let jump_boundary = nums.len().min(nums[0] as usize + 1);
+
+    (1..jump_boundary).rev().any(|i| can_jump_from(&nums[i..]))
+}
+// -----------------------------------------------------------------------------
+
