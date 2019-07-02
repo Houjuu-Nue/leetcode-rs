@@ -94,23 +94,61 @@ impl Solution for Solution1 {
 }
 // -----------------------------------------------------------------------------
 
+
 // -----------------------------------------------------------------------------
-/// Approach 2: Backtracking.
+/// approach 2: Backtracking.
 pub struct Solution2;
 impl Solution for Solution2 {
 
     fn can_jump(&self, nums: Vec<i32>) -> bool {
-        can_jump_from(&nums)
+        backtracking_can_jum_from(&nums)
     }
 }
 
-fn can_jump_from(nums: &[i32]) -> bool {
+fn backtracking_can_jum_from(nums: &[i32]) -> bool {
 
     if nums[0] as usize + 1 >= nums.len() { return true }
     
     let jump_boundary = nums.len().min(nums[0] as usize + 1);
 
-    (1..jump_boundary).rev().any(|i| can_jump_from(&nums[i..]))
+    (1..jump_boundary).rev().any(|i| backtracking_can_jum_from(&nums[i..]))
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// approach 3: Dynamic Programming Top-Down.
+pub struct Solution3;
+
+#[derive(Debug, Clone)]
+enum LocStatus { Good, Bad, Unknown }
+
+impl Solution for Solution3 {
+
+    fn can_jump(&self, nums: Vec<i32>) -> bool {
+        let mut status = vec![LocStatus::Unknown; nums.len()];
+        (*status.last_mut().unwrap()) = LocStatus::Good;
+
+        dyn_topdown_can_jum_from(&nums, &mut status)
+    }
+}
+
+fn dyn_topdown_can_jum_from(nums: &[i32], status: &mut [LocStatus]) -> bool {
+
+    match status[0] {
+        | LocStatus::Good => true,
+        | LocStatus::Bad  => false,
+        | LocStatus::Unknown => {
+
+            let jump_boundary = nums.len().min(nums[0] as usize + 1);
+
+            let ans = (1..jump_boundary).any(|i| dyn_topdown_can_jum_from(&nums[i..], &mut status[i..]));
+
+            if ans == false { status[0] = LocStatus::Bad; }
+            
+            ans
+        },
+    }
 }
 // -----------------------------------------------------------------------------
 
