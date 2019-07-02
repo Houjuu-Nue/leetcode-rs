@@ -41,27 +41,15 @@ impl Solution for Solution0 {
 
     fn can_jump(&self, nums: Vec<i32>) -> bool {
 
-        let mut location = 0;
+        let mut last_pos = nums.len() - 1;
 
-        while location < nums.len() - 1 {
-            let max_step = nums[location] as usize;
-            let boundary = location + max_step;
-            if boundary >= nums.len() - 1 { return true }
-
-            let mut max_extra = 0;
-            let mut max_i = 0;
-            for i in 1..=max_step {
-                if nums[location + i] + i as i32 >= max_extra {
-                    max_extra = nums[location + i] + i as i32;
-                    max_i = i;
-                }
+        for i in (0..nums.len()).rev() {
+            if i + nums[i] as usize >= last_pos {
+                last_pos = i;
             }
-
-            if max_i == 0 { return false }
-            location += max_i;
         }
 
-        true
+        last_pos == 0
     }
 }
 // -----------------------------------------------------------------------------
@@ -175,26 +163,6 @@ impl Solution for Solution4 {
         }
 
         status[0] == LocStatus::Good
-    }
-}
-// -----------------------------------------------------------------------------
-
-// -----------------------------------------------------------------------------
-/// Approach 5: Greedy Strategy.
-pub struct Solution5;
-impl Solution for Solution5 {
-
-    fn can_jump(&self, nums: Vec<i32>) -> bool {
-
-        let mut last_pos = nums.len() - 1;
-
-        for i in (0..nums.len()).rev() {
-            if i + nums[i] as usize >= last_pos {
-                last_pos = i;
-            }
-        }
-
-        last_pos == 0
     }
 }
 // -----------------------------------------------------------------------------

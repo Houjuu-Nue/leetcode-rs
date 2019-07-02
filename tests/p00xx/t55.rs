@@ -16,7 +16,6 @@ fn t55() {
         Box::new(Solution2) as Box<dyn Solution>,
         Box::new(Solution3) as Box<dyn Solution>,
         Box::new(Solution4) as Box<dyn Solution>,
-        Box::new(Solution5) as Box<dyn Solution>,
     ];
     
     let test_cases = [
