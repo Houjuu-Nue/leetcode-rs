@@ -179,3 +179,23 @@ impl Solution for Solution4 {
 }
 // -----------------------------------------------------------------------------
 
+// -----------------------------------------------------------------------------
+/// Approach 5: Greedy Strategy.
+pub struct Solution5;
+impl Solution for Solution5 {
+
+    fn can_jump(&self, nums: Vec<i32>) -> bool {
+
+        let mut last_pos = nums.len() - 1;
+
+        for i in (0..nums.len()).rev() {
+            if i + nums[i] as usize >= last_pos {
+                last_pos = i;
+            }
+        }
+
+        last_pos == 0
+    }
+}
+// -----------------------------------------------------------------------------
+
