@@ -16,7 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Number of solutions |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ------------------- |
-| [#56](src/p00xx/p56.rs) | [Merge Intervals](https://leetcode.com/problems/merge-intervals/) |            |                     |
+| [#56](src/p00xx/p56.rs) | [Merge Intervals](https://leetcode.com/problems/merge-intervals/) | Medium     | 2                   |
 | [#55](src/p00xx/p55.rs) | [Jump Game](https://leetcode.com/problems/jump-game/)        | Medium     | 5                   |
 | [#54](src/p00xx/p54.rs) | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) | Medium     | 2                   |
 | [#53](src/p00xx/p53.rs) | [Maximum Subarray](https://leetcode.com/problems/maximum-subarray/) | Easy       | 4                   |

@@ -64,6 +64,7 @@ impl Solution for Solution0 {
 
 
             if interval1[0] == interval2[0] {
+                // either `interval1` or `interval2` is duplicate
                 intervals.push(vec![interval1[0], interval1[1].max(interval2[1])]);
             } else {
                 match interval1[1].cmp(&interval2[0]) {
@@ -72,21 +73,51 @@ impl Solution for Solution0 {
                         intervals.push(interval2);
                     },
                     | std::cmp::Ordering::Equal => {
+                        // `interval1` and `interval2` can merge.
                         intervals.push(vec![interval1[0], interval2[1]]);
                     },
                     | std::cmp::Ordering::Greater => {
                         if interval1[1] > interval2[1] {
+                            // `interval2` is duplicate
                             intervals.push(interval1);
                         } else {
+                            // `interval1` and `interval2` can merge.
                             intervals.push(vec![interval1[0], interval2[1]]);
                         }
                     },
                 }
             }
 
-            dbg!(&intervals);
         }
         
+    }
+}
+// -----------------------------------------------------------------------------
+
+
+// -----------------------------------------------------------------------------
+/// Approach 1: Simplified Approach 0.
+pub struct Solution1;
+impl Solution for Solution1 {
+
+    fn merge(&self, mut intervals: Vec<Vec<i32>>) -> Vec<Vec<i32>> {
+        
+        intervals.sort_by(|v1, v2| v1[0].cmp(&v2[0]));
+
+        let mut ans = Vec::new();
+        let mut max = intervals[0].clone();
+
+        for interval in intervals.into_iter().skip(1) {
+            if interval[0] > max[1] {
+                ans.push(max.clone());
+                max = interval;
+            } else if interval[1] > max[1] {
+                max[1] = interval[1];
+            }
+        }
+        
+        ans.push(max);
+        ans
     }
 }
 // -----------------------------------------------------------------------------
