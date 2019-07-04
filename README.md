@@ -1,6 +1,6 @@
 # Leetcode.rs<img src="./logo.svg" width="125" height="50" align="right"/>
 
-![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-56/1096-red.svg?logo=leetcode)
+![Solution Coverage](https://img.shields.io/badge/Solution_Coverage-57/1096-red.svg?logo=leetcode)
 [![Rust Lang](https://img.shields.io/badge/Language-Rust-brown.svg?logo=Rust&logoColor=white&color=DBA882)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
@@ -16,6 +16,7 @@ cargo test -- t1 # run test case for problem #1
 
 | #                       | Problem                                                      | Difficulty | Number of solutions |
 | ----------------------- | ------------------------------------------------------------ | ---------- | ------------------- |
+| [#57](src/p00xx/p57.rs) | [Insert Interval](https://leetcode.com/problems/insert-interval/) | Hard       | 1                   |
 | [#56](src/p00xx/p56.rs) | [Merge Intervals](https://leetcode.com/problems/merge-intervals/) | Medium     | 2                   |
 | [#55](src/p00xx/p55.rs) | [Jump Game](https://leetcode.com/problems/jump-game/)        | Medium     | 5                   |
 | [#54](src/p00xx/p54.rs) | [Spiral Matrix](https://leetcode.com/problems/spiral-matrix/) | Medium     | 2                   |
